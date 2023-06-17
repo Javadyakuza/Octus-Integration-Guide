@@ -14,6 +14,8 @@ Tokens that are originally from Everscale are known as "native" tokens. Examples
 
 # Event Contract Deploy Value (Expected_Evers)
 
+> ### this parameter is needed when we are using `deposit` funnction which is for transfering alien token to everscale.
+
 In order for a transfer to be confirmed in the Everscale bridge, an event contract containing the data of the transfer event on the EVM network must be deployed in the Everscale blockchain. The deploy value of that contract must be paid by the user either in EVER or the origin EVM network native coin. For example, BSC requires BNB, Polygon requires Matic, and so on. If the user chooses to pay...
 
 # Operational Differences Between Alien Tokens and Native Tokens in Everscale
