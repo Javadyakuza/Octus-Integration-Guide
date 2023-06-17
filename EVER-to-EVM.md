@@ -6,5 +6,6 @@
 
 # evm to ever transfer integration step by step
 
-1 - we deposite the target token to "MultiVaultFacetDeposit" contract by calling "deposite" function on it, actually the function does the transfer for us.
-required params are as follows :
+1 - in terms of locking assets in everscale to make a cross-chain trannsfer we have two scenarios :
+
+- 1.1 : if our token was `EVER` which is everscale native coin we have to first wrap it into `WEVER` and then deposite it into "CONTRACT NAME"

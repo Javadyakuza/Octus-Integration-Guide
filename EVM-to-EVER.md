@@ -12,11 +12,15 @@
 ## EVM to Ever Transfer Integration Step-by-Step
 
 1. To deposit the target token to `MultiVaultFacetDeposit`, we have two options:
+
    - 1.1: If our token was an ERC-20 token we must use the `deposit` function on `MultiVaultFacetDeposit` contract:
+
    ```solidity
    function deposit(depositParams memory d) external payable override;
    ```
+
    ### Parameters
+
    ```solidity
    struct DepositParams {
        IEverscale.EverscaleAddress recipient;
@@ -26,11 +30,17 @@
        bytes payload;
    }
    ```
+
    - 1.2: If our token was the EVM network native coin, we must use `depositByNativeToken` on `MultiVaultFacetDeposit` contract and attach the desired amount of the native coin to the tx:
+
+     > NOTE : in `MultiVault` the native coin will be converted to its wrapped version and then rest of the operation will be resumed.
+
    ```solidity
    function depositByNativeToken(DepositNativeTokenParams memory d) external payable override;
    ```
+
    ### Parameters
+
    ```solidity
    struct DepositNativeTokenParams {
        IEverscale.EverscaleAddress recipient;
@@ -39,7 +49,9 @@
        bytes payload;
    }
    ```
+
    > Note: If our target token was an Alien token, this contract must be approved first (see [concepts.md](./concepts.md)).
+
 2. Now it's time to deploy the event contract which has two ways:
    - 2.1: See {[EVM to Ever Transfer Mechanics Overview : 3.1](#31-if-the-user-at-the-time-of-deposit-accepted-to-pay-the-event-contract-deployment-fee-with-the-origin-evm-network-native-coin-the-relayers-will-automatically-swap-that-to-ever-which-is-the-everscale-native-coin-and-deploy-the-event-contract-themselves)}.
    - 2.2: In this case, we have to deploy the event contract ourselves by calling this function:
@@ -47,7 +59,7 @@
    function deployEvent(IEthereumEverscaleEvent.EthereumEverscaleEventVoteData eventVoteData) external override;
    ```
    ### Parameters
-   #### 2.2.1
+   - 2.2.1
    ```solidity
    struct EthereumEverscaleEventVoteData {
        uint eventTransaction;
