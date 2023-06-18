@@ -29,6 +29,8 @@
     ) external;
 ```
 
+### Parameters
+
 | param            | descritption                                                 |
 | ---------------- | ------------------------------------------------------------ |
 | tokens           | amount of the target transferable token                      |
@@ -50,6 +52,8 @@
         bytes[] memory signatures
     ) external;
 ```
+
+### Parameters
 
 | param      | descritption                                                                   |
 | ---------- | ------------------------------------------------------------------------------ |
@@ -73,6 +77,8 @@
     ) external;
 ```
 
+### Parameters
+
 | param             | descritption                                                  |
 | ----------------- | ------------------------------------------------------------- |
 | amount            | amount of the target transferable token                       |
@@ -95,6 +101,8 @@
     ) external;
 ```
 
+### Parameters
+
 | param      | descritption                                                                   |
 | ---------- | ------------------------------------------------------------------------------ |
 | payload    | operational payload, see [concepts](./concepts.md#Payloads).                   |
@@ -115,6 +123,8 @@
     ) external;
 ```
 
+### Parameters
+
 | param          | descritption                                                  |
 | -------------- | ------------------------------------------------------------- |
 | amount         | amount of the target transferable token                       |
@@ -134,6 +144,8 @@
         bytes[] memory signatures
     ) external;
 ```
+
+### Parameters
 
 | param      | descritption                                                                   |
 | ---------- | ------------------------------------------------------------------------------ |
