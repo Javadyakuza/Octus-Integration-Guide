@@ -12,7 +12,7 @@ If the target token being transferred from EVM to Everscale is an ERC-20 token, 
 
 Tokens that are originally from Everscale are known as "native" tokens. Examples include EVER, WEVER bridgeToken and others.
 
-# Event Contract Deploy Value (Expected_Evers)
+# Event Contract Deploy Value (Expected_Evers) : ?
 
 > ### this parameter is needed when we are using `deposit` funnction which is for transfering alien token to everscale.
 
