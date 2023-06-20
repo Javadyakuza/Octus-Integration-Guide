@@ -2,10 +2,13 @@
 
 1. The user must deposit the desired amount of the target token that is going to be transferred to the Everscale in a contract named `MultiVaultFacetDeposit` which is in the origin EVM network.
 
-2. Through the previous operation, two events will be emitted which one of them is always `Deposit` and another one depended on the situation is either `AlienTransfer` or `NativeTransfer` {see [concepts.md : alien ERC-20 token approve ](./concepts.md#alien-erc-20-token-approve--if-the-target-token-to-transfer-from-evm-to-ever-was-a-erc-20-token-before-that-we-have-to-approve-the-multivault-contract-to-be-able-to-transfer-the-token-target-amount-to-itself-if-the-transferable-token-was-the-evm-network-native-coin-we-have-to-prompt-the-user)}.
-3. Once the depositing the target token to MultiVault is done, it's time for confirming it in the Everscale network by deploying an event Contract on the Everscale bridge in order to release the token in Everscale. There are two ways to confirm that:
-   - 3.1: If the user at the time of deposit accepted to pay the everscale [operations](./concepts.md#ever-network-operations) gas fees with the origin EVM network native coin, the relayers will automatically swap that to ever which is the Everscale native coin and deploy the event contract and transfers the target token to the recipient address.
-   - 3.2: If the user has chosen to pay the everscale [operations](./concepts.md#ever-network-operations) gas fee with ever, now it's time for the user to deploy the event contract itself. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum votes by relayers the token will be released.
+2. Through the previous operation, two events will be emitted which one of them is always `Deposit` and another one depended on the situation is either `AlienTransfer` or `NativeTransfer` {see [concepts.md : alien ERC-20 token approve ](./concepts.md#approving-alien-erc-20-tokens)}.
+3. Once the depositing the target token to MultiVault is done, it's time for deploying an event Contract on the Everscale network in order to relayers confirm the deposit in evm network and releasing if ever native token and minting if alien token:
+
+   - 3.1: If the user at the time of deposit accepted to pay the everscale [operations](./concepts.md#ever-network-operations) gas fees with the origin EVM network native coin, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and deploys the event contract.
+
+   - 3.2: If the user has chosen to pay the everscale [operations](./concepts.md#ever-network-operations) gas fee with ever, now it's time for the user to deploy the event contract itself. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum confirm votes by relayers the token will be released if ever native Token and minted if ever alien token.
+
 4. After the event contract is successfully deployed on the Everscale bridge, the token will automatically be released and transferred to the recipient Everscale address.
 
 > ### NOTICE : all fo the refrenced contracts addresses can be found at [addresses.md](./addresses.md).
