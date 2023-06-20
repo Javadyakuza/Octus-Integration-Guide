@@ -60,8 +60,3 @@ at the EVER to EVM direction the operation's on the EVM network are as follows :
 - ### Payload for savingWithdrawNative :
 - ### payload for burning :
 - ### payload for NT transfer :
-  🔳 ivan, [6/20/23 1:35 AM]
-  evm-tvm: locked(alien)/burned(native) -> minted(alien)/released(native)
-
-🔳 ivan, [6/20/23 1:35 AM]
-tvm-evm: locked(native)/burned(alien) -> minted(native)/released(alien)
