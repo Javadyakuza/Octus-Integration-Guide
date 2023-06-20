@@ -14,20 +14,21 @@ Tokens that are originally from Everscale are known as "native" tokens. Examples
 
 # Event Contract Deploy Value (Expected_Evers)
 
-is amount of ever which we expect to see after deploying the event contract and confirming it.
+### is amount of ever which we expect to see after deploying the event contract and confirming it.
 
-> ### this parameter is needed when we are using `deposit` funnction which is for transfering alien token to everscale.
+> #### this parameter is needed when we are using `deposit` funnction which is for transfering alien token to everscale.
 
-In order for a transfer to be confirmed in the Everscale bridge, an event contract containing the data of the transfer event on the EVM network must be deployed in the Everscale network. The deploy value of that contract must be paid by the user in ever.
+In order to a transfer get confirmed in the Everscale bridge, an event contract containing the data of the transfer event on sender network must be deployed in the Everscale
+network, which can be done in two ways
 
-- 1 - users can deploy the event contract themselves in case of paying with ever directly.
-- 2 - event contracat will be deployed by credit backend in case of paying with evm native coin, credit backends have wallets in all networks and equalizes balances.
+- 1 - users can deploy the event contract themselves in case of paying with ever directly and have to attach `eventInitialBalance` to the event deployment tx.
+- 2 - Credit backends have wallets on all networks and equalize balances. Therefore, if payment is made with an attached EVM native coin of the required size (`eventInitialBalance`) for the transaction, the credit backend will deploy the event contract.
 
 # Operational Differences Between Alien Tokens and Native Tokens in Everscale
 
-- EVER -> EVM : WHEN we transfer a ever native token, it will be locked/frozen on ever and released on evm network and when we want to transfer an alien token it will be burnt on ever and released on alien evm token and minted if evm native token on evm network.
+- EVER -> EVM : WHEN we transfer a ever native token, it will be locked/frozen on ever and released on evm network and when we want to transfer an alien token it will be burnt on ever and released on evm if alien evm token and minted if evm native token on evm network.
 
-- EVM -> EVER : WHEN we transfer a evm native token, it will be burnt on evm network and minted on ever network and when we want to transfer an alien token it will be locked/frozen on evm and released if ever native token and minted if ever alien token on ever network.
+- EVM -> EVER : WHEN we transfer a evm native token, it will be burnt on evm network and minted on ever network and when we want to transfer an alien token it will be locked/frozen on evm and released on ever if ever native token and minted if ever alien token on ever network.
 
 # EVER Network operations
 
@@ -39,7 +40,7 @@ at the EVM to EVER direction the operation's on the EVM network are as follows :
 
 # credit backend
 
-- Credit backends are a set of backend scripts that, in addition to their other responsibilities, are responsible for deploying event contracts and manually equalizing balances between associated networks during a transaction.
+- Credit backends are a set of backend scripts that, in addition to their other responsibilities, are responsible for deploying event contracts, manually equalizing balances between associated networks during a transaction and [releasing or minting](#operational-differences-between-alien-tokens-and-native-tokens-in-everscale) tokens on recipient network.
 
 ### [EVM-to-EVER ⏎](./EVM-to-EVER.md)
 

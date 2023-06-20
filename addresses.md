@@ -2,16 +2,16 @@
 
 > ### this table contains foregoing smart contracts in EVER-to-EVM.md and EVM-to-EVER.md files.
 
-| ---       | contract name | MultiVault | EthereumEverscaleEventConfiguration | Vault |
-| --------- | ------------- | ---------- | ----------------------------------- | ----- |
-| network   | ---           | ---        | ---                                 | ---   |
-| Everscale | ---           | 0:0        | 0:0                                 | 0:0   |
-| Ethereum  | ---           | 0x0        | 0x0                                 | 0x0   |
-| Bsc       | ---           | 0x0        | 0x0                                 | 0x0   |
-| Polygon   | ---           | 0x0        | 0x0                                 | 0x0   |
-| Ftm       | ---           | 0x0        | 0x0                                 | 0x0   |
-| Solana    | ---           | 0x0        | 0x0                                 | 0x0   |
-| Avalanche | ---           | 0x0        | 0x0                                 | 0x0   |
+| ---       | contract name | MultiVault                                 | EthereumEverscaleEventConfiguration                                | Vault                                                              |
+| --------- | ------------- | ------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| network   | ---           | ---                                        | ---                                                                | ---                                                                |
+| Everscale | ---           | 0:0                                        | 0:54f2bc1064cbe7d9b057808b8578e9b2f3ff54d27ef472ffbdb16b2e4461292a | 0:557957cba74ab1dc544b4081be81f1208ad73997d74ab3b72d95864a41b779a4 |
+| Ethereum  | ---           | 0x0                                        | 0x0                                                                | 0x0                                                                |
+| Bsc       | ---           | 0x54c55369A6900731D22eACb0DF7C0253CF19dFff | 0x0                                                                | 0x0                                                                |
+| Polygon   | ---           | 0x0                                        | 0x0                                                                | 0x0                                                                |
+| Ftm       | ---           | 0x0                                        | 0x0                                                                | 0x0                                                                |
+| Solana    | ---           | 0x0                                        | 0x0                                                                | 0x0                                                                |
+| Avalanche | ---           | 0x0                                        | 0x0                                                                | 0x0                                                                |
 
 ## TokensAddress
 

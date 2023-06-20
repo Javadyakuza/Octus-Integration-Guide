@@ -9,8 +9,6 @@
 
    - 3.2: If the user has chosen to pay the everscale [operations](./concepts.md#ever-network-operations) gas fee with ever, now it's time for the user to deploy the event contract itself. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum confirm votes by relayers the token will be released if ever native Token and minted if ever alien token.
 
-4. After the event contract is successfully deployed on the Everscale bridge, the token will automatically be released and transferred to the recipient Everscale address.
-
 > ### NOTICE : all fo the refrenced contracts addresses can be found at [addresses.md](./addresses.md).
 
 ## EVM to Ever Transfer Integration Step-by-Step
@@ -73,7 +71,8 @@
 
 2. Now it's time to deploy the event contract which has two ways:
 
-   - 2.1: See {[EVM to Ever Transfer Mechanics Overview : 3.1](#31-if-the-user-at-the-time-of-deposit-accepted-to-pay-the-event-contract-deployment-fee-with-the-origin-evm-network-native-coin-the-relayers-will-automatically-swap-that-to-ever-which-is-the-everscale-native-coin-and-deploy-the-event-contract-themselves)}.
+   - 2.1: See {[EVM to Ever Transfer Mechanics Overview : 3.1](#31-if-the-user-at-the-time-of-deposit-accepted-to-pay-the-event-contract-deployment-fee-with-the-origin-evm-network-native-coin-the-relayers-will-automatically-swap-that-to-ever-which-is-the-everscale-native-coin-and-deploy-the-event-contract-themselves)}. at this stpe we just have to wait.
+
    - 2.2: In this case, we have to deploy the event contract ourselves by calling this function:
 
    ```solidity
