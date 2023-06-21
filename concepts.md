@@ -38,6 +38,16 @@ at the EVM to EVER direction the operation's on the EVM network are as follows :
 
 - releasing token if ever native token and minting if evm alien token.
 
+# EVER TO EVM EVENTS
+
+there is two types of event contracts at this direction that will be deployed on everscale.
+
+- `MultiVaultEverscaleEVMEventNative`
+- `MultiVaultEverscaleEVMEventAlien`
+  these type of evetns are made to emit the `Confirmed` event and then get closed.\
+
+> see also [EVM TO EVEVR EVENTS](#evm-to-ever-events)
+
 # credit backend
 
 - Credit backends are a set of backend scripts that, in addition to their other responsibilities, are responsible for deploying event contracts, manually equalizing balances between associated networks during a transaction and [releasing or minting](#operational-differences-between-alien-tokens-and-native-tokens-in-everscale) tokens on recipient network.
@@ -51,6 +61,16 @@ at the EVM to EVER direction the operation's on the EVM network are as follows :
 at the EVER to EVM direction the operation's on the EVM network are as follows :
 
 - minting if evm native token and releasing if alien token.
+
+# EVM TO EVER EVENTS
+
+there is two types of event contracts at this direction that will be deployed on everscale.
+
+- `MultiVaultEVMEverscaleEventNative`
+- `MultiVaultEVMEverscaleEventAlien`
+  these type of evetns are made to emit the `Confirmed` event and release(ever native token) or mint(ever alien token) and then get closed.\
+
+> see also [EVER TO EVM EVENTS](#ever-to-evm-events)
 
 ### [EVER-to-EVM ⏎](./EVER-to-EVM.md)
 
