@@ -1,6 +1,6 @@
 # ever to evm tranfer mechanics overview
 
-1 - first we have to lock/freeze our token in everscale if ever native token and burning it if ever alien token. see also {[alien and native tokens](./concepts.md#alien-tokens)}
+1 - first we have to lock our token in everscale if ever native token and burning it if ever alien token. see also {[alien and native tokens](./concepts.md#alien-tokens)}
 
 2 - through previous transaction the event contract is deployed on everscale and within a second the relayers will confirm it by voting to the event contract.
 
@@ -14,7 +14,7 @@
 
 ### Transfering EVER
 
-- 1 - we call the `wrap` method on the `Vault` contract and lock/freeze our newly minted WEVER in eversale:
+- 1 - we call the `wrap` method on the `Vault` contract and lock our newly minted WEVER in eversale:
 
 ```solidity
     function wrap(
@@ -58,7 +58,7 @@
 
 > ## `BRIDGE` is used in this example.
 
-1 - we have to lock/freeze the the target token to `ProxyMultiVaultNative`'s `TokenWallet` contract by calling the `transfer` function on our target `TokenWallet` contract :
+1 - we have to lock the the target token to `ProxyMultiVaultNative`'s `TokenWallet` contract by calling the `transfer` function on our target `TokenWallet` contract :
 
 ```solidity
     function transfer(
