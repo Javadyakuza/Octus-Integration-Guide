@@ -96,6 +96,8 @@ these contracts can be called by the user with `deploEvent` function or by the c
 
 `MultiVaultEVMEverscaleEventNative` is deployed when transfering a ever native token and `MultiVaultEVMEverscaleEventAlien` are deployed when transfering ever alien token.
 
+#### `EthereumEverscaleEventConfiguration` contract has two deployed version for each network, we are supporting 6 network's except evescale right now so we have 12 `EthereumEverscaleEventConfiguration` contrat's, all these addresses can be found [here](./addresses.md)
+
 ### [EVER-to-EVM ⏎](./EVER-to-EVM.md)
 
 # PAYLOADS

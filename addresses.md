@@ -15,15 +15,15 @@
 
 > ### this table contains EthereumEverscaleEventConfiguration contract addresses for everscale native/alien token transfering events and each network.
 
-| ---       | contract name | EthereumEverscaleEventConfiguration(netive event) | EthereumEverscaleEventConfiguration(alien event) |
-| --------- | ------------- | ------------------------------------------------- | ------------------------------------------------ |
-| network   | ---           | ---                                               | 0                                                |
-| Ethereum  | ---           | 0x0                                               | 0                                                |
-| Bsc       | ---           | 0x0                                               | 0                                                |
-| Polygon   | ---           | 0x0                                               | 0                                                |
-| Ftm       | ---           | 0x0                                               | 0                                                |
-| Solana    | ---           | 0x0                                               | 0                                                |
-| Avalanche | ---           | 0x0                                               | 0                                                |
+| ---       | contract name | EthereumEverscaleEventConfiguration(netive event)                  | EthereumEverscaleEventConfiguration(alien event)                   |
+| --------- | ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| network   | ---           | ---                                                                | ---                                                                |
+| Ethereum  | ---           | 0:e9b0c8700d7ddc3ce3c5f1c35ad337cbc2f88e8abb5afadc9fa09a270cbed0e2 | 0:55ec14a1513eb4570d5933e0fbe5c0b3341d2dfaccfeecfcc9c7c2f4d668ed45 |
+| Bsc       | ---           | 0:bd71db92ddb726930c0a23aade41d5d6134056efb791605189e8489d1d29e626 | 0:54f2bc1064cbe7d9b057808b8578e9b2f3ff54d27ef472ffbdb16b2e4461292a |
+| Polygon   | ---           | 0:97f1e01028e1404c6b0fc0791e04df43616ef8aaf5964195182355093f385ff6 | 0:3f5f1e9bb4b6921aab0257597eaeaad1b80cc843eb31d977f58ada720cfe9ff2 |
+| Ftm       | ---           | 0:399627ec06dd8075370850aafbfbf99d05752df16b3459b448a7d0b4b9a083d1 | 0:12861a3fd38d48086343b67d1a17509736d068e807a783f29b558339f0da421a |
+| Solana    | ---           | 0x0                                                                | 0                                                                  |
+| Avalanche | ---           | 0:f07e44eb5507527c7527b4399d9cef220c0fcf50c6a4db71b3517bd763fdc528 | 0:124457db37ea02f2b7c5575b86f759e51f02adc11cbf36b36fd1da6c36fc82f6 |
 
 ## TokensAddress
 
