@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 require("dotenv").config();
 
-async function TransferEvmAlienEverNativeToken() {
+async function TransferEvmAlienEverAlienToken() {
   // setting the signer
   const evmSigner = await ethers.provider.getSigner(0);
   console.log("user wallet address : ", evmSigner.address);
@@ -42,7 +42,7 @@ async function TransferEvmAlienEverNativeToken() {
     console.log("this is the res ", res);
   });
 }
-TransferEvmAlienEverNativeToken().catch(error => {
+TransferEvmAlienEverAlienToken().catch(error => {
   console.error(error);
   process.exitCode = 1;
 });

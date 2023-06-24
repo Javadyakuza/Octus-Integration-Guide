@@ -28,7 +28,7 @@ async function TransferEVMeverNativeToken() {
   const deposit_payload = "0x";
 
   await MultiVaultNativeDeposit([recipient, amount, deposit_expected_evers, deposit_payload], {
-    value: deposit_value,
+    value: deposit_value + amount,
   }).then(res => {
     console.log("this is the res ", res);
   });
