@@ -41,7 +41,7 @@ async function deployAlieEvent() {
 
   const alienTokenBase = {
     chainId: "56",
-    token: "0x55d398326f99059ff775485246999027b3197955",
+    token: "55d398326f99059ff775485246999027b3197955",
   };
 
   const alienTokenMeta = {

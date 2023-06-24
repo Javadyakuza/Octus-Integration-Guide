@@ -1,5 +1,5 @@
-// MultiVaultFacetDeposit json
-const { ethers, BigNumber } = require("hardhat");
+import { ethers } from "hardhat";
+
 require("dotenv").config();
 
 async function TransferEVMeverAlienToken() {
@@ -10,9 +10,7 @@ async function TransferEVMeverAlienToken() {
   let MultiVault = await ethers.getContractFactory("MultiVault");
   let AlienToken = await ethers.getContractFactory("ERC20");
   // attaching them to on-chain addresses
-  MultiVault = await MultiVault.attach(
-    "0x54c55369a6900731d22eacb0df7c0253cf19dfff"
-  );
+  MultiVault = await MultiVault.attach("0x54c55369a6900731d22eacb0df7c0253cf19dfff");
   AlienToken = AlienToken.attach("0x55d398326f99059ff775485246999027b3197955");
   // approving the MultiVault contract
   // await AlienToken.approve(
@@ -22,13 +20,10 @@ async function TransferEVMeverAlienToken() {
   // confirming that the contract is approved fro desired amount
   console.log(
     "this is the multiVault allowance : ",
-    await AlienToken.allowance(evmSigner.address, await MultiVault.getAddress())
+    await AlienToken.allowance(evmSigner.address, await MultiVault.getAddress()),
   );
   // deposititng
-  const MultiVaultDeposit =
-    MultiVault.connect(evmSigner)[
-      "deposit(((int8,uint256),address,uint256,uint256,bytes))"
-    ];
+  const MultiVaultDeposit = MultiVault.connect(evmSigner)["deposit(((int8,uint256),address,uint256,uint256,bytes))"];
 
   const amount = ethers.parseEther("0.1");
 
@@ -41,20 +36,13 @@ async function TransferEVMeverAlienToken() {
   const deposit_expected_evers = 5000000000;
   const deposit_payload = "0x";
 
-  await MultiVaultDeposit(
-    [
-      recipient,
-      await AlienToken.getAddress(),
-      amount,
-      deposit_expected_evers,
-      deposit_payload,
-    ],
-    { value: deposit_value }
-  ).then((res) => {
+  await MultiVaultDeposit([recipient, await AlienToken.getAddress(), amount, deposit_expected_evers, deposit_payload], {
+    value: deposit_value,
+  }).then(res => {
     console.log("this is the res ", res);
   });
 }
-TransferEVMeverAlienToken().catch((error) => {
+TransferEVMeverAlienToken().catch(error => {
   console.error(error);
   process.exitCode = 1;
 });
