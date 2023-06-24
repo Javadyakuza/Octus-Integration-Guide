@@ -1,13 +1,12 @@
 import * as EVER from "everscale-standalone-client";
 import { Address, Contract, Signer } from "locklift";
-import { FactorySource } from "../build/factorySource";
-import { EncodeMultiVaultAlienEVMEverscaleParam, EventVoteDataParam } from "../types/index";
+import { FactorySource } from "../../build/factorySource";
+import { EncodeMultiVaultAlienEVMEverscaleParam, EventVoteDataParam } from "../../types/index";
 import {
   EthereumEverscaleEventConfigurationA,
   EthereumEverscaleEventConfigurationN,
   CellEncoderStandalone,
-} from "../constants";
-import { CreateAccountOutput } from "locklift/types";
+} from "../../constants";
 /**
  * @description at this module we will deploy MultiVaultEVMEverscaleEventAlien contract in order to complete the deposit proccess on
  * evm network in order to perform a transfer a ever alien token from evm network to ever.
