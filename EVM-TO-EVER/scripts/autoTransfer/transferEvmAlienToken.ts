@@ -13,10 +13,7 @@ async function TransferEVMeverAlienToken() {
   MultiVault = await MultiVault.attach("0x54c55369a6900731d22eacb0df7c0253cf19dfff");
   AlienToken = AlienToken.attach("0x55d398326f99059ff775485246999027b3197955");
   // approving the MultiVault contract
-  // await AlienToken.approve(
-  //   await MultiVault.getAddress(),
-  //   ethers.parseEther("0.1")
-  // );
+  await AlienToken.approve(await MultiVault.getAddress(), ethers.parseEther("0.1"));
   // confirming that the contract is approved fro desired amount
   console.log(
     "this is the multiVault allowance : ",
