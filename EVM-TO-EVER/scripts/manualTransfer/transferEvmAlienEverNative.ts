@@ -1,22 +1,25 @@
 import { ethers } from "hardhat";
-
+import { LogDescription, ContractTransactionResponse, TransactionReceipt, Log } from "ethers/src.ts/ethers";
+import { deployedContracts } from "../../constants";
 require("dotenv").config();
-
-async function TransferEvmAlienEverNativeToken() {
+/**
+ * this module performs transfering an evm alien, ever native token from an evm network to everscale network using TransferEvmAlienEverNativeToken funtcion.
+ * BRIDGE is used as token and sender evm network is BSC at this praticular example.
+ * @notice event deploying on everscale side is done manually see{../README.md}, because expected_evers is setted to zero
+ * @returns ContractTransactionResponse returned data about the tx
+ */
+async function TransferEvmAlienEverNativeToken(): Promise<ContractTransactionResponse | null> {
   // setting the signer
   const evmSigner = await ethers.provider.getSigner(0);
   console.log("user wallet address : ", evmSigner.address);
   // getting the contracts
   let MultiVault = await ethers.getContractFactory("MultiVault");
-  let AlienToken = await ethers.getContractFactory("ERC20");
+  let AlienToken = await ethers.getContractFactory("MultiVaultToken");
   // attaching them to on-chain addresses
-  MultiVault = await MultiVault.attach("0x54c55369a6900731d22eacb0df7c0253cf19dfff");
-  AlienToken = AlienToken.attach("0x55d398326f99059ff775485246999027b3197955");
+  MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
+  AlienToken = AlienToken.attach(deployedContracts.BSCBRIDGE);
   // approving the MultiVault contract
-  // await AlienToken.approve(
-  //   await MultiVault.getAddress(),
-  //   ethers.parseEther("0.1")
-  // );
+  await AlienToken.approve(await MultiVault.getAddress(), ethers.parseUnits("0.01", 9));
   // confirming that the contract is approved fro desired amount
   console.log(
     "this is the multiVault allowance : ",
@@ -25,24 +28,36 @@ async function TransferEvmAlienEverNativeToken() {
   // deposititng
   const MultiVaultDeposit = MultiVault.connect(evmSigner)["deposit(((int8,uint256),address,uint256,uint256,bytes))"];
 
-  const amount = ethers.parseEther("0.1");
+  const amount = ethers.parseUnits("0.01", 9);
 
   const recipient = {
     wid: "0",
-    addr: "0x346c638fe811bcf448d9070116bfa356aa90b4b55567c8810e52ad2a72ff274e",
+    addr: deployedContracts.SampleEverReceiverAddress,
   };
 
-  const deposit_value = ethers.parseEther("0.0017");
+  const deposit_value = ethers.parseEther("0.0016");
   const deposit_expected_evers = 0;
   const deposit_payload = "0x";
 
-  await MultiVaultDeposit([recipient, await AlienToken.getAddress(), amount, deposit_expected_evers, deposit_payload], {
-    value: deposit_value,
-  }).then(res => {
-    console.log("this is the res ", res);
-  });
+  try {
+    const res = await MultiVaultDeposit(
+      [recipient, await AlienToken.getAddress(), amount, deposit_expected_evers, deposit_payload],
+      {
+        value: deposit_value,
+      },
+    );
+    console.log("tx hash ; ", res?.hash);
+    return res;
+  } catch (e) {
+    console.log(e.message);
+    return null;
+  }
 }
-TransferEvmAlienEverNativeToken().catch(error => {
-  console.error(error);
-  process.exitCode = 1;
-});
+TransferEvmAlienEverNativeToken()
+  .then(res => {
+    console.log("succesfull , tx hash : ", res?.hash);
+  })
+  .catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+  });

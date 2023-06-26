@@ -1,11 +1,11 @@
 import * as EVER from "everscale-standalone-client";
 import { Contract, Signer } from "locklift";
 import { mapEthBytesIntoTonCell } from "eth-ton-abi-converter";
-import { buildAlienEventVoteData } from "../../evm/scripts/helpers/buildEventVoteData";
-import Event from "../../evm/interfaces/voteData";
-import { FactorySource } from "../../build/factorySource";
-import { EventVoteDataParam } from "../../types/index";
-import { EthereumEverscaleEventConfigurationA } from "../../constants";
+import { buildAlienEventVoteData } from "../../../evm/scripts/helpers/buildEventVoteData";
+import Event from "../../../evm/interfaces/voteData";
+import { FactorySource } from "../../../build/factorySource";
+import { EventVoteDataParam } from "../../../types/index";
+import { EthereumEverscaleEventConfigurationA } from "../../../constants";
 /**
  * @description at this module we will deploy MultiVaultEVMEverscaleEventAlienEvent contract in order to complete the deposit proccess on
  * evm network in order to perform a transfer a ever alien token from evm network to ever.
@@ -50,20 +50,21 @@ export async function deployAlienEvent(evmTxHash: string) {
     eventBlockNumber: eventLog.eventBlockNumber,
     eventBlock: eventLog.eventBlock,
   };
+  console.log("this is the event log ", eventVoteData);
 
-  await EvmEverEventConf.methods
-    .deployEvent({ eventVoteData: eventVoteData })
-    .send({
-      from: await everWallet.address,
-      amount: locklift.utils.toNano(6),
-      bounce: true,
-    })
-    .then(res => {
-      console.log("succesful, tx hash : ", res.id.hash);
-    });
+  // await EvmEverEventConf.methods
+  //   .deployEvent({ eventVoteData: eventVoteData })
+  //   .send({
+  //     from: await everWallet.address,
+  //     amount: locklift.utils.toNano(6),
+  //     bounce: true,
+  //   })
+  //   .then(res => {
+  //     console.log("this is the res : ", res);
+  //   });
 }
 
-deployAlienEvent("0xf7de0756932b32624323054a9e878f23a953cd76461a17d7933622b217c9b90f")
+deployAlienEvent("")
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);

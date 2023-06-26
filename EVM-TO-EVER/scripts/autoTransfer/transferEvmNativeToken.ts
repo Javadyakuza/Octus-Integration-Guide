@@ -1,16 +1,24 @@
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 import { ethers } from "hardhat";
+import { deployedContracts } from "../../constants";
+import { LogDescription, ContractTransactionResponse, TransactionReceipt, Log } from "ethers/src.ts/ethers";
+/**
+ * this module performs transfering an evm native, ever alien token from an evm network to everscale network using TransferEVMeverNativeToken function
+ * BNB is used as token and sender evm network is BSC at this praticular example.
+ * @notice event deploying on everscale is done automatically by setting the certain value for expected_evers param
+ * @returns ContractTransactionResponse returned data about the tx
 
+ */
 require("dotenv").config();
 
-async function TransferEVMeverNativeToken() {
+async function TransferEVMeverNativeToken(): Promise<ContractTransactionResponse | null> {
   // setting the signer
   const evmSigner: HardhatEthersSigner = await ethers.provider.getSigner(0);
   console.log("user wallet address : ", evmSigner.address);
   // getting the contracts
   let MultiVault = await ethers.getContractFactory("MultiVault");
   // attaching them to on-chain addresses
-  MultiVault = await MultiVault.attach("0x54c55369a6900731d22eacb0df7c0253cf19dfff");
+  MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
   // deposititng
   const MultiVaultNativeDeposit =
@@ -20,20 +28,29 @@ async function TransferEVMeverNativeToken() {
 
   const recipient = {
     wid: "0",
-    addr: "0x346c638fe811bcf448d9070116bfa356aa90b4b55567c8810e52ad2a72ff274e",
+    addr: deployedContracts.SampleEverReceiverAddress,
   };
 
-  const deposit_value = ethers.parseEther("0.0017");
+  const deposit_value = ethers.parseEther("0.0016");
   const deposit_expected_evers = 5000000000;
   const deposit_payload = "0x";
 
-  await MultiVaultNativeDeposit([recipient, amount, deposit_expected_evers, deposit_payload], {
-    value: deposit_value + amount,
-  }).then(res => {
-    console.log("this is the res ", res);
-  });
+  try {
+    const res = await MultiVaultNativeDeposit([recipient, amount, deposit_expected_evers, deposit_payload], {
+      value: deposit_value + amount,
+    });
+    console.log("tx hash ; ", res?.hash);
+    return res;
+  } catch (e) {
+    console.log(e.message);
+    return null;
+  }
 }
-TransferEVMeverNativeToken().catch(error => {
-  console.error(error);
-  process.exitCode = 1;
-});
+TransferEVMeverNativeToken()
+  .then(res => {
+    console.log("succesfull , tx hash : ", res?.hash);
+  })
+  .catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+  });

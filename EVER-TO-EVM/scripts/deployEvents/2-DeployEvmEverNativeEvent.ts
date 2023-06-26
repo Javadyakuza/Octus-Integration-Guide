@@ -46,7 +46,6 @@ async function deployNativeEvent(evmTxHash: string) {
     eventBlockNumber: eventLog.eventBlockNumber,
     eventBlock: eventLog.eventBlock,
   };
-  console.log("this is the event log ", eventVoteData);
 
   await EvmEverEventConf.methods
     .deployEvent({ eventVoteData: eventVoteData })
@@ -56,7 +55,7 @@ async function deployNativeEvent(evmTxHash: string) {
       bounce: true,
     })
     .then(res => {
-      console.log("is aborted ? ", res.aborted);
+      console.log("succesful, tx hash : ", res.id.hash);
     });
 }
 
