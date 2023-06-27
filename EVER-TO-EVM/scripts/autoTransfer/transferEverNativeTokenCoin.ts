@@ -15,6 +15,7 @@ async function transferEverNativeCoin() {
     workchain: 0,
   });
   console.log("ever wallet address : ", await everWallet.address.toString());
+  // fetching the contracts
 }
 
 transferEverNativeCoin()
