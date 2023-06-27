@@ -7,7 +7,7 @@ import { FactorySource } from "../../build/factorySource";
 import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationA } from "../../constants";
 
-async function transferEverNativeToken() {
+async function transferEverNativeCoin() {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
   const everWallet: EVER.EverWalletAccount = await EVER.EverWalletAccount.fromPubkey({
@@ -17,7 +17,7 @@ async function transferEverNativeToken() {
   console.log("ever wallet address : ", await everWallet.address.toString());
 }
 
-transferEverNativeToken()
+transferEverNativeCoin()
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);

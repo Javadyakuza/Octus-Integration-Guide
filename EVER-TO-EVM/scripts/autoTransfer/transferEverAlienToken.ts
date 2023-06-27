@@ -7,7 +7,15 @@ import { FactorySource } from "../../build/factorySource";
 import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationA } from "../../constants";
 
-async function transferEverAlienToken() {}
+async function transferEverAlienToken() {
+  // setting ever wallet
+  const signer: Signer = (await locklift.keystore.getSigner("0"))!;
+  const everWallet: EVER.EverWalletAccount = await EVER.EverWalletAccount.fromPubkey({
+    publicKey: signer.publicKey,
+    workchain: 0,
+  });
+  console.log("ever wallet address : ", await everWallet.address.toString());
+}
 
 transferEverAlienToken()
   .then(() => process.exit(0))
