@@ -102,7 +102,8 @@ these contracts can be called by the user with `deploEvent` function or by the c
 
 # PAYLOADS
 
-Octus Bridge provides a feature to attach payload to bridge transfer in order to perform many operations such as swapping, flash loans, and more. For simple currency transfers, in Evm -> Ever direction payloads are not needed.
+Octus Bridge provides a feature to attach payload to bridge transfer in order to perform many operations such as swapping, flash loans, and more.
+For simple token transfers in Evm -> Ever direction payloads are not needed.
 
 - ## Payload for wrapping :
 - ## Payload for savingWithdrawAlien :
