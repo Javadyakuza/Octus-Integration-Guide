@@ -11,7 +11,7 @@ import { EthereumEverscaleEventConfigurationA } from "../../constants";
  * evm network in order to perform a transfer a ever alien token from evm network to ever.
  * USDT token is used in this particualr example
  */
-export async function deployAlienEvent(evmTxHash: string) {
+async function deployAlienEvent(evmTxHash: string) {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
   const everWallet: EVER.EverWalletAccount = await EVER.EverWalletAccount.fromPubkey({
@@ -63,7 +63,7 @@ export async function deployAlienEvent(evmTxHash: string) {
     });
 }
 
-deployAlienEvent("0xf7de0756932b32624323054a9e878f23a953cd76461a17d7933622b217c9b90f")
+deployAlienEvent("")
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);
