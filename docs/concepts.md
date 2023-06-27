@@ -103,10 +103,13 @@ these contracts can be called by the user with `deploEvent` function or by the c
 # PAYLOADS
 
 Octus Bridge provides a feature to attach payload to bridge transfer in order to perform many operations such as swapping, flash loans, and more.
-For simple token transfers in Evm -> Ever direction payloads are not needed.
 
-- ## Payload for wrapping :
+For simple token transfers in EVM -> EVER direction payloads are not needed.
+
+For token transfers in EVER -> EVM payloads are needed, their recipe's can be found below :
+
+- ## transfer EVER : [wrap payload](../EVER-TO-EVM/scripts/helpers/buildWrapPayload.ts)
+- ## transfer native token : [transer payload](../EVER-TO-EVM/scripts/helpers/buildTransferPayload.ts)
+- ## transfer alien token : [burn payload](../EVER-TO-EVM/scripts/helpers/buildBurnPayload.ts)
 - ## Payload for savingWithdrawAlien :
 - ## Payload for savingWithdrawNative :
-- ## payload for burning :
-- ## payload for NT transfer :
