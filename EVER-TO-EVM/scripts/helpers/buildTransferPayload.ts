@@ -1,5 +1,10 @@
 import { getRandomUint } from "./randuint";
-
+/**
+ * buildTransferPayload function prepares the payload to be used in TokenWalletUpgradable.transfer in order to transfer a native token from everscale to an evm network.
+ * @param evmRecipient receiver EvmAddress
+ * @param chainId target evm network chainId
+ * @returns transfer payload string
+ */
 export async function buildTransferPayload(evmRecipient: string, chainId: string): Promise<string> {
   const transferPayload = await locklift.provider.packIntoCell({
     data: {

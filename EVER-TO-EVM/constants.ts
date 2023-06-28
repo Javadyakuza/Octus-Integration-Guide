@@ -22,7 +22,9 @@ export const EvmReceiver = "0xF1B7B971Da6715ecDF24F0c38352618a059309d7";
 // sample evm receiver
 export const EVERUSDT: Address = new Address("0:a519f99bb5d6d51ef958ed24d337ad75a1c770885dcd42d51d6663f9fcdacfb2");
 // ever USDT
-export const MergPoolUSDTBsc = new Address("0:5f1ae3df506d1cec64cb2a30040a930f29e662a4527c1ddc0dfc2a86ba897dc4");
+export const TargetTokenRootAlienEvmUSDT = new Address(
+  "0:5f1ae3df506d1cec64cb2a30040a930f29e662a4527c1ddc0dfc2a86ba897dc4",
+);
 // MergPoolUSDTEvmBsc
 export const EVERWBNB: Address = new Address("0:9002c8a1cbbca3f9700b1b9438082342ede76d579e3a5a7c6f0e5d030ac5df43");
 // ever WBNB

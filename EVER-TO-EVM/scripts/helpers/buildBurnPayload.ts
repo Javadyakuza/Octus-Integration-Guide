@@ -1,6 +1,11 @@
 import { getRandomUint } from "./randuint";
-import * as constants from "../../constants";
-export async function buildBurnPayload(evmRecipient: string): Promise<string> {
+import { Address } from "locklift";
+/**
+ * buildBurnPayload function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
+ * @param evmRecipient receiver EvmAddress
+ * @returns burn payload string
+ */
+export async function buildBurnPayload(evmRecipient: string, TargetTokenRootAlienEvm: Address): Promise<string> {
   const operationPayload = await locklift.provider.packIntoCell({
     data: {
       addr: evmRecipient,
@@ -39,7 +44,7 @@ export async function buildBurnPayload(evmRecipient: string): Promise<string> {
     data: {
       nonce: getRandomUint(),
       type: 0,
-      targetToken: constants.MergPoolUSDTBsc,
+      targetToken: TargetTokenRootAlienEvm, // TokenRootAlienEvm, different with normal tip3 tokens in everscale.
       operationPayload: payload.boc,
     },
     structure: [
