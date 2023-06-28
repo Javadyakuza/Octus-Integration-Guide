@@ -26,7 +26,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
   const BRIDGETransferAmount: number = 0.1;
   const transferPayload = await buildTransferPayload(constants.EvmReceiver, "56");
 
-  // wrapping
+  // transfering
   try {
     const res: Transaction = await AlienTokenWalletUpgradable.methods
       .transfer({

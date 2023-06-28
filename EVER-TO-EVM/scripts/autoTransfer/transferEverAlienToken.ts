@@ -1,13 +1,11 @@
 import * as EVER from "everscale-standalone-client";
-import { Contract, Signer } from "locklift";
-import { mapEthBytesIntoTonCell } from "eth-ton-abi-converter";
-import { buildAlienEventVoteData } from "../../EvmOperations/scripts/helpers/buildEventVoteData";
-import Event from "../../EvmOperations/interfaces/voteData";
+import { Contract, Signer, Transaction } from "locklift";
+import { ethers } from "hardhat";
+import { buildBurnPayload } from "../helpers/buildBurnPayload";
+import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
-import { EventVoteDataParam } from "../../types/index";
-import { EthereumEverscaleEventConfigurationA } from "../../constants";
-
-async function transferEverAlienToken() {
+// : Promise<Transaction | unknown>
+async function transferEverAlienCoin() {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
   const everWallet: EVER.EverWalletAccount = await EVER.EverWalletAccount.fromPubkey({
@@ -15,9 +13,40 @@ async function transferEverAlienToken() {
     workchain: 0,
   });
   console.log("ever wallet address : ", await everWallet.address.toString());
+  // fetching the contracts
+  const USDTTokenRoot: Contract<FactorySource["TokenRoot"]> = await locklift.factory.getDeployedContract(
+    "TokenRoot",
+    constants.EVERUSDT,
+  );
+  const AlienTokenWalletUpgradable: Contract<FactorySource["AlienTokenWalletUpgradeable"]> =
+    locklift.factory.getDeployedContract(
+      "AlienTokenWalletUpgradeable",
+      (await USDTTokenRoot.methods.walletOf({ answerId: 0, walletOwner: everWallet.address }).call({})).value0,
+    );
+  // getting the payload
+  const USDTTransferAmount: number = 0.01;
+  const burnPayload = await buildBurnPayload(constants.EvmReceiver);
+  console.log(burnPayload);
+  // burning
+  try {
+    const res: Transaction = await AlienTokenWalletUpgradable.methods
+      .burn({
+        amount: ethers.parseUnits(USDTTransferAmount.toString(), 6).toString(),
+        callbackTo: constants.MergePool_V4,
+        payload: burnPayload,
+        remainingGasTo: constants.EventCloser,
+      })
+      .send({ from: everWallet.address, amount: constants.transfer_fees.WEVERAutoRelease, bounce: true });
+
+    console.log("succesfull, tx hash : ", res.id.hash);
+    return res;
+  } catch (e) {
+    console.log("an error accures while wrapping : ", e);
+    return e;
+  }
 }
 
-transferEverAlienToken()
+transferEverAlienCoin()
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);
