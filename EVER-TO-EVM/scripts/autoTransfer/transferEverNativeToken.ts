@@ -3,8 +3,13 @@ import { Contract, Signer, Transaction } from "locklift";
 import { buildTransferPayload } from "../helpers/buildTransferPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
-
-async function transferEverNativeCoin(): Promise<Transaction | unknown> {
+/**
+ * this module performs transfering an ever native, evm alien token from everscale network to an evm network using transferEverNativeToken funtcion.
+ * BRIDGE is used as token and receiver evm network is BSC at this praticular example.
+ * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.{see ../../constants.ts:32}
+ * @returns ContractTransactionResponse returned data about the tx
+ */
+async function transferEverNativeToken(): Promise<Transaction | unknown> {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
   const everWallet: EVER.EverWalletAccount = await EVER.EverWalletAccount.fromPubkey({
@@ -37,7 +42,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
         recipient: constants.ProxyMultiVaultNativeV_4,
         remainingGasTo: constants.EventCloser,
       })
-      .send({ from: everWallet.address, amount: constants.transfer_fees.WEVERAutoRelease, bounce: true });
+      .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmAutoRelease, bounce: true });
 
     console.log("succesfull, tx hash : ", res.id.hash);
     return res;
@@ -47,7 +52,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
   }
 }
 
-transferEverNativeCoin()
+transferEverNativeToken()
   .then(() => process.exit(0))
   .catch(e => {
     console.log(e);

@@ -3,7 +3,12 @@ import { Contract, Signer, Transaction } from "locklift";
 import { EverAbi } from "../../abi/WEVERVault";
 import { buildWrapPayload } from "../helpers/buildWrapPayload";
 import * as constants from "../../constants";
-
+/**
+ * this module performs transfering an ever native, evm alien token from everscale network to an evm network using transferEverNativeCoin funtcion.
+ * EVER is used as token and receiver evm network is BSC at this praticular example.
+ * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.
+ * @returns ContractTransactionResponse returned data about the tx
+ */
 async function transferEverNativeCoin(): Promise<Transaction | unknown> {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
@@ -29,7 +34,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
         gas_back_address: everWallet.address,
         payload: wrapPayload,
       })
-      .send({ from: everWallet.address, amount: constants.transfer_fees.WEVERAutoRelease, bounce: true });
+      .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmAutoRelease, bounce: true });
     console.log("succesfull, tx hash : ", res.id.hash);
     return res;
   } catch (e) {

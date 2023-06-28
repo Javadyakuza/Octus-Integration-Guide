@@ -29,6 +29,6 @@ export const EVERWBNB: Address = new Address("0:9002c8a1cbbca3f9700b1b9438082342
 export const EVERBRIDGE: Address = new Address("0:f2679d80b682974e065e03bf42bbee285ce7c587eb153b41d761ebfd954c45e1");
 // ever BRIDGE
 export const transfer_fees = {
-  WEVERAutoRelease: locklift.utils.toNano("13"),
-  WEVERManualRelease: locklift.utils.toNano("6"),
+  EverToEvmAutoRelease: locklift.utils.toNano("13"),
+  EverToEvmManualRelease: locklift.utils.toNano("6"),
 };
