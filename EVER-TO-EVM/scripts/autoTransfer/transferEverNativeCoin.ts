@@ -6,7 +6,7 @@ import * as constants from "../../constants";
 /**
  * this module performs transfering an ever native, evm alien token from everscale network to an evm network using transferEverNativeCoin funtcion.
  * EVER is used as token and receiver evm network is BSC at this praticular example.
- * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.
+ * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.{see ../../constants.ts:32}
  * @returns ContractTransactionResponse returned data about the tx
  */
 async function transferEverNativeCoin(): Promise<Transaction | unknown> {
@@ -24,7 +24,13 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
   );
   // getting the payload
   const EverTransferAmount: number = 1;
-  const wrapPayload = await buildWrapPayload(everWallet.address, constants.EvmReceiver, EverTransferAmount, "56", true);
+  const wrapPayload: string = await buildWrapPayload(
+    everWallet.address,
+    constants.EvmReceiver,
+    EverTransferAmount,
+    "56",
+    true,
+  );
   // wrapping
   try {
     const res: Transaction = await WEVERVaultContract.methods

@@ -8,7 +8,6 @@ require("dotenv").config();
  * USDT is used as token and sender evm network is BSC at this praticular example.
  * @notice event deploying on everscale is done automatically by setting the certain value for expected_evers param
  * @returns ContractTransactionResponse returned data about the tx
-
  */
 async function TransferEVMeverAlienToken(): Promise<ContractTransactionResponse | null> {
   // setting the signer

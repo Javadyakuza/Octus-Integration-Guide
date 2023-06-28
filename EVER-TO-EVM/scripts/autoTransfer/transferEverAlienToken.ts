@@ -30,7 +30,7 @@ async function transferEverAlienToken(): Promise<Transaction | unknown> {
     );
   // getting the payload
   const USDTTransferAmount: number = 0.01;
-  const burnPayload = await buildBurnPayload(constants.EvmReceiver);
+  const burnPayload: string = await buildBurnPayload(constants.EvmReceiver);
   console.log(burnPayload);
   // burning
   try {

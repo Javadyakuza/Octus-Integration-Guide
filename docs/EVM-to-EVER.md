@@ -1,6 +1,6 @@
 ## EVM to Ever Transfer Mechanics Overview
 
-1. The user must deposit the desired amount of the target token that is going to be transferred to the Everscale in a contract named `MultiVaultFacetDeposit` which is in the origin EVM network.
+1. The user must deposit the desired amount of the target token that is going to be transferred to the Everscale in a contract named `MultiVault` which is in the origin EVM network.
 
 2. Through the previous operation, two events will be emitted which one of them is always `Deposit` and another one depended on the situation is either `AlienTransfer` or `NativeTransfer` {see [concepts.md : alien ERC-20 token approve ](./concepts.md#approving-alien-erc-20-tokens)}.
 3. Once the depositing the target token to MultiVault is done, it's time for deploying an event Contract on the Everscale network in order to relayers confirm the deposit in evm network and releasing if ever native token and minting if alien token:
@@ -13,9 +13,9 @@
 
 ## EVM to Ever Transfer Integration Step-by-Step
 
-1. To deposit the target token to `MultiVaultFacetDeposit`, we have two options:
+1. To deposit the target token to `MultiVault`, we have two options:
 
-   - 1.1: If our token was an ERC-20 token we must use the `deposit` function on `MultiVaultFacetDeposit` contract:
+   - 1.1: If our token was an ERC-20 token we must use the `deposit` function on `MultiVault` contract:
 
    ```solidity
    function deposit(depositParams memory d) external payable override;
@@ -41,7 +41,7 @@
    | expected_evers | see [expected_evers](./concepts.md#event-contract-deploy-value-expected_evers) |
    | payload        | operational payload, see [payloads](./concepts.md#payloads)                    |
 
-   - 1.2: If our token was the EVM network native coin, we must use `depositByNativeToken` on `MultiVaultFacetDeposit` contract and attach the desired amount of the native coin to the tx:
+   - 1.2: If our token was the EVM network native coin, we must use `depositByNativeToken` on `MultiVault` contract and attach the desired amount of the native coin to the tx:
 
      > NOTE : in `MultiVault` the native coin will be converted to its wrapped version and then rest of the operation will be resumed.
 

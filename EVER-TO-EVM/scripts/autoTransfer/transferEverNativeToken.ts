@@ -29,7 +29,7 @@ async function transferEverNativeToken(): Promise<Transaction | unknown> {
     );
   // getting the payload
   const BRIDGETransferAmount: number = 0.1;
-  const transferPayload = await buildTransferPayload(constants.EvmReceiver, "56");
+  const transferPayload: string = await buildTransferPayload(constants.EvmReceiver, "56");
 
   // transfering
   try {
