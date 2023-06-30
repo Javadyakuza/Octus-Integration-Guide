@@ -108,8 +108,10 @@ For simple token transfers in EVM -> EVER direction payloads are not needed.
 
 For token transfers in EVER -> EVM payloads are needed, their recipe's can be found below :
 
-- ## transfer EVER : [wrap payload](../EVER-TO-EVM/scripts/helpers/buildWrapPayload.ts)
-- ## transfer native token : [transer payload](../EVER-TO-EVM/scripts/helpers/buildTransferPayload.ts)
-- ## transfer alien token : [burn payload](../EVER-TO-EVM/scripts/helpers/buildBurnPayload.ts)
-- ## Payload for savingWithdrawAlien :
-- ## Payload for savingWithdrawNative :
+- ### Transfer EVER : [wrap payload](../EVER-TO-EVM/scripts/helpers/buildWrapPayload.ts)
+- ### Transfer Native Token : [transer payload](../EVER-TO-EVM/scripts/helpers/buildTransferPayload.ts)
+- ### Transfer Alien Token : [burn payload](../EVER-TO-EVM/scripts/helpers/buildBurnPayload.ts)
+- ### Payload for saveWithdrawAlien and saveWithdrawNative :
+  two mentioned functions have two inputs (payload, signatures).
+  - [signatures](../EVER-TO-EVM/scripts/helpers/getSignatures.ts)
+  - [payload](../EVER-TO-EVM/scripts/helpers/buildSaveWithdrawPayload.ts)
