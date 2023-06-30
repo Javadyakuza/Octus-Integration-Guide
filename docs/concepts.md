@@ -1,32 +1,48 @@
-# EVM to EVER Concepts
+# TOKEN TYPES
 
-## Alien Tokens
+## EVER TOKEN TYPES
+
+### Alien Tokens
 
 Tokens that are not originally from Everscale are known as "alien" tokens. Examples include [WETH](./addresses.md#weth), [WBTC](./addresses.md#wbtc), [USDT](./addresses.md#usdt) and etc.
 
-- #### Approving Alien ERC-20 Tokens
-
-If the target token being transferred from EVM to Everscale is an ERC-20 token, it is necessary to approve the "Multivault" contract at the first in order to transfer the token target amount to itself. If the transferable token is the EVM network's native coin, we must attach the desired amount of native coin to tx which calls the `depositbyNativeCcoin`.
-
-## Native Tokens
+### Native Tokens
 
 Tokens that are originally from Everscale are known as "native" tokens. Examples include [WEVER](./addresses.md#wever). [BRIDGE](./addresses.md#bridge) and [QUBE](./addresses.md#qube).
 
+## EVM TOKEN TYPES
+
+### Alien Tokens
+
+Tokens that are ERC-20 and non-native everscale token and non-native coin in target evm network(ETH, BNB, FTM and etc), are known as alien tokens, Examples include **USDT**, **USDC**, **WBTC** and etc.
+
+### Native Tokens
+
+Tokens that are target's evm network native coin. Examples include **MATIC**, **BNB** and **ETH** and etc.
+
+### MultiVault Tokens
+
+Tokens that are everscale native token or coin. Examples include **WEVER**, **BRIDGE** and **QUBE**.
+
+---
+
+# OPERATIONS
+
+## EVM OPERATIONS
+
+### Approving Alien ERC-20 Tokens
+
+If the target token being transferred from EVM to Everscale is **non-everscale native** and **ERC-20 token**, it's necessary to approve the "Multivault" contract at the first in order to transfer the amount of target token to itself. If the transferable token is the EVM network's native coin, we must attach the desired amount of native coin to tx and call the `depositbyNativeCcoin`.
+
 ## Event Contract Deploy Value (Expected_Evers)
 
-is amount of ever which we expect to see after deploying the event contract and confirming it.
+Amount of ever which we expect to see after event deployment and confirmation.
 
-> #### this parameter is needed when we are using `deposit` funnction which is for transfering alien token to everscale.
-
-In order to a transfer get confirmed in the Everscale bridge, an event contract containing the data of the transfer event on sender network must be deployed in the Everscale
-network, which can be done in two ways
-
-- 1 - users can deploy the event contract themselves in case of paying with ever directly and have to attach `eventInitialBalance` to the event deployment tx.
-- 2 - Credit backends have wallets on all networks and equalize balances. Therefore, if payment is made with an attached EVM native coin of the required size (`eventInitialBalance`) for the transaction, the credit backend will deploy the event contract.
+Note that in EVM -> EVER direction, if we want to pay the EVER network operations in sender evm network native coin, we have to detemine that by setting this parameter to a certain amount and viceversa. see [how to set expected_evers ?](./FAQ.md##how-to-set-expected_evers)
 
 ## Operational Differences Between Alien Tokens and Native Tokens in Everscale
 
-- EVER -> EVM : WHEN we transfer a ever native token, it will be locked on ever and released on evm network and when we want to transfer an alien token it will be burnt on ever and released on evm if alien evm token and minted if evm native token on evm network.
+- EVER -> EVM : When we transfer a ever native token, it will be locked on ever and released on evm network and when we want to transfer an alien token it will be burnt on ever and released on evm if alien evm token and minted if evm native token on evm network.
 
 - EVM -> EVER : WHEN we transfer a evm native token, it will be burnt on evm network and minted on ever network and when we want to transfer an alien token it will be locked on evm and released on ever if ever native token and minted if ever alien token on ever network.
 
