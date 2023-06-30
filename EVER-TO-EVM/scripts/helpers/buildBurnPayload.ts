@@ -90,10 +90,10 @@ export async function buildBurnPayloadForEvmnativeToken(evmRecipient: string): P
     ] as const,
   });
 
-  let randNonce: string = getRandomUint();
+  let randomNonce: string = getRandomUint();
   const data = await locklift.provider.packIntoCell({
     data: {
-      nonce: randNonce,
+      nonce: randomNonce,
       network: 1,
       burnPayload: burnPayload.boc,
     },
@@ -104,5 +104,5 @@ export async function buildBurnPayloadForEvmnativeToken(evmRecipient: string): P
     ] as const,
   });
 
-  return [data.boc, randNonce];
+  return [data.boc, randomNonce];
 }

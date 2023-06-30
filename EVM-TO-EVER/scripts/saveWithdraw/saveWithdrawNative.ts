@@ -21,10 +21,10 @@ export async function saveWithdrawNative(): Promise<ContractTransactionResponse 
   // attaching them to on-chain addresses
   MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
-  const signatures = SampleSignaturesEverNativeCoinEvmAlienToken.map(sign => {
+  const signatures = SampleSignaturesEverNativeEvmAlienToken.map(sign => {
     const signature = `0x${Buffer.from(sign, "base64").toString("hex")}`;
     const address = web3.eth.accounts.recover(
-      web3.utils.sha3(SamplePayloadEverNativeCoinEvmAlienToken as string) as string,
+      web3.utils.sha3(SamplePayloadEverNativeEvmAlienToken as string) as string,
       signature,
     );
     return {
@@ -49,7 +49,7 @@ export async function saveWithdrawNative(): Promise<ContractTransactionResponse 
   MultiVault = await MultiVault.connect(evmSigner);
   try {
     const res = await MultiVault.saveWithdrawNative(
-      SamplePayloadEverNativeCoinEvmAlienToken,
+      SamplePayloadEverNativeEvmAlienToken,
       signatures.map(({ signature }) => signature),
     );
     console.log("tx hash ; ", res?.hash);

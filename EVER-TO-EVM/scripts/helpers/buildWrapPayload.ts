@@ -16,7 +16,7 @@ export async function buildWrapPayload(
   amount: string | number,
   chainId: string,
   releaseByEver: boolean,
-): Promise<string> {
+): Promise<[string, string]> {
   const transferPayload = await locklift.provider.packIntoCell({
     data: {
       addr: evmRecipient,
@@ -41,10 +41,10 @@ export async function buildWrapPayload(
       },
     ] as const,
   });
-
+  let randomNonce: string = getRandomUint();
   const data = await locklift.provider.packIntoCell({
     data: {
-      nonce: getRandomUint(),
+      nonce: randomNonce,
       network: 1,
       transferPayload: transferPayload.boc,
     },
@@ -71,5 +71,5 @@ export async function buildWrapPayload(
       { name: "payload", type: "cell" },
     ] as const,
   });
-  return compounderPayload.boc;
+  return [compounderPayload.boc, randomNonce];
 }

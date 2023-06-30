@@ -5,7 +5,7 @@ import { getRandomUint } from "./randuint";
  * @param chainId target evm network chainId
  * @returns transfer payload string
  */
-export async function buildTransferPayload(evmRecipient: string, chainId: string): Promise<string> {
+export async function buildTransferPayload(evmRecipient: string, chainId: string): Promise<[string, string]> {
   const transferPayload = await locklift.provider.packIntoCell({
     data: {
       addr: evmRecipient,
@@ -30,10 +30,10 @@ export async function buildTransferPayload(evmRecipient: string, chainId: string
       },
     ] as const,
   });
-
+  let randomNonce = getRandomUint();
   const data = await locklift.provider.packIntoCell({
     data: {
-      nonce: getRandomUint(),
+      nonce: randomNonce,
       network: 1,
       transferPayload: transferPayload.boc,
     },
@@ -43,5 +43,5 @@ export async function buildTransferPayload(evmRecipient: string, chainId: string
       { name: "transferPayload", type: "cell" },
     ] as const,
   });
-  return data.boc;
+  return [data.boc, randomNonce];
 }

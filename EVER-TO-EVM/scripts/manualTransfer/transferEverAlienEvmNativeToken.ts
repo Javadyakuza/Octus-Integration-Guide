@@ -11,7 +11,7 @@ import { fetchAlienEventAddressFromOriginTxHash } from "../helpers/deriveEventAd
 /**
  * this module performs transfering an ever alien, evm native token from everscale network to an evm network using transferEverAlienToken funtcion.
  * WBNB is used as token and receiver evm network is BSC at this praticular example.
- * @notice releasing assets on evm network is done manually by calling saveWithdrawNative on MV contract at BSC.
+ * @notice releasing assets on evm network is done manually by calling saveWithdrawAlien on MV contract at BSC.
  * @returns ContractTransactionResponse returned data about the tx
  */
 async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {

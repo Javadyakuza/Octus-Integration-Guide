@@ -24,7 +24,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
   );
   // getting the payload
   const EverTransferAmount: number = 1;
-  const wrapPayload: string = await buildWrapPayload(
+  const wrapPayload: [string, string] = await buildWrapPayload(
     everWallet.address,
     constants.EvmReceiver,
     EverTransferAmount,
@@ -38,7 +38,7 @@ async function transferEverNativeCoin(): Promise<Transaction | unknown> {
         tokens: locklift.utils.toNano(EverTransferAmount),
         owner_address: constants.Compounder,
         gas_back_address: constants.EventCloser,
-        payload: wrapPayload,
+        payload: wrapPayload[0],
       })
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmAutoRelease, bounce: true });
     console.log("succesfull, tx hash : ", res.id.hash);

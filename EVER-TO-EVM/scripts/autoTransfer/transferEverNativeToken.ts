@@ -29,7 +29,7 @@ async function transferEverNativeToken(): Promise<Transaction | unknown> {
     );
   // getting the payload
   const BRIDGETransferAmount: number = 0.1;
-  const transferPayload: string = await buildTransferPayload(constants.EvmReceiver, "56");
+  const transferPayload: [string, string] = await buildTransferPayload(constants.EvmReceiver, "56");
 
   // transfering
   try {
@@ -38,7 +38,7 @@ async function transferEverNativeToken(): Promise<Transaction | unknown> {
         amount: locklift.utils.toNano(BRIDGETransferAmount),
         deployWalletValue: "200000000",
         notify: true,
-        payload: transferPayload,
+        payload: transferPayload[0],
         recipient: constants.ProxyMultiVaultNativeV_4,
         remainingGasTo: constants.EventCloser,
       })

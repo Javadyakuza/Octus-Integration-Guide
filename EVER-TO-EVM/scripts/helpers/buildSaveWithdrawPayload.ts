@@ -60,6 +60,5 @@ export async function buildSaveWithdraw(EverEvmAlienEventContractAddress: Addres
       },
     ],
   );
-  console.log(encodedEvent);
   return encodedEvent;
 }
