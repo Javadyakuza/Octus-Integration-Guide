@@ -6,6 +6,7 @@ import { buildSaveWithdraw } from "../helpers/buildSaveWithdrawPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
 import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
+import { deployEventTxFinder } from "../helpers/deployEventTxFinder";
 /**
  * this module performs transfering an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken funtcion.
  * USDT is used as token and receiver evm network is BSC at this praticular example.
@@ -56,7 +57,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
 
     console.log("succesfull, tx hash: ", res?.id.hash);
     // fetching deployEvevnt Tx hash
-    const deployEventTxHash = ""; // fetching ...
+    const deployEventTxHash = await deployEventTxFinder(res?.id.hash);
     // getting the event contract address
     const eventAddress: Address = await deriveEverEvmAlienEventAddress(
       deployEventTxHash,
