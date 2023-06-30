@@ -6,7 +6,7 @@ import { buildSaveWithdraw } from "../helpers/buildSaveWithdrawPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
 import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
-import { deployEventTxFinder } from "../helpers/deployEventTxFinder";
+import { fetchAlienEventAddressFromOriginTxHash } from "../helpers/deriveEventAddressFromOriginHash";
 /**
  * this module performs transfering an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken funtcion.
  * USDT is used as token and receiver evm network is BSC at this praticular example.
@@ -56,21 +56,22 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmManualRelease, bounce: true });
 
     console.log("succesfull, tx hash: ", res?.id.hash);
-    // fetching deployEvevnt Tx hash
-    const deployEventTxHash = await deployEventTxFinder(res?.id.hash);
     // getting the event contract address
-    const eventAddress: Address = await deriveEverEvmAlienEventAddress(
-      deployEventTxHash,
-      burnPayload[1],
-      AlienTokenWalletUpgradable.address,
-      ethers.parseUnits(USDTTransferAmount.toString(), 18).toString(), // decimals is 18 because the final token at mergepool is an evmToken
-      constants.EvmReceiver,
-      everWallet.address,
-      constants.TargetTokenRootAlienEvmUSDT,
-    );
+    const eventAddress: Address = await fetchAlienEventAddressFromOriginTxHash(res?.id.hash);
+    // getting the event contract address
+    // const eventAddress: Address = await deriveEverEvmAlienEventAddress(
+    //   deployEventTxHash,
+    //   burnPayload[1],
+    //   AlienTokenWalletUpgradable.address,
+    //   ethers.parseUnits(USDTTransferAmount.toString(), 18).toString(), // decimals is 18 because the final token at mergepool is an evmToken
+    //   constants.EvmReceiver,
+    //   everWallet.address,
+    //   constants.TargetTokenRootAlienEvmUSDT,
+    // );
     // loading event contract
     const eventContract: Contract<FactorySource["EverscaleEthereumBaseEvent"]> =
       await locklift.factory.getDeployedContract("EverscaleEthereumBaseEvent", eventAddress);
+    eventContract.events;
     // preparing payload for `saveWithdrawAlien`
     const payload: string = await buildSaveWithdraw(eventAddress);
     // fetching the signatures for `saveWithdrawAlien`
