@@ -1,0 +1,39 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "getData",
+			"inputs": [
+				{"name":"nonce","type":"uint32"},
+				{"name":"proxy","type":"address"},
+				{"name":"token","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"recipient","type":"uint160"},
+				{"name":"remainingGasTo","type":"address"},
+				{"name":"sender","type":"address"},
+				{"components":[{"name":"recipient","type":"uint160"},{"name":"payload","type":"bytes"},{"name":"strict","type":"bool"}],"name":"callback","type":"tuple"}
+			],
+			"outputs": [
+				{"name":"value0","type":"cell"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"}
+	]
+}

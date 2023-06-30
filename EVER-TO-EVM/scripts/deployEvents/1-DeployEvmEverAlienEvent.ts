@@ -8,7 +8,7 @@ import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationA } from "../../constants";
 /**
  * @description at this module we will deploy MultiVaultEVMEverscaleEventAlienEvent contract in order to complete the deposit proccess on
- * evm network in order to perform a transfer a ever alien token from evm network to ever.
+ * evm network in order to perform a transfer for an ever alien token from evm network to everscale.
  * USDT token is used in this particualr example
  */
 async function deployAlienEvent(evmTxHash: string) {

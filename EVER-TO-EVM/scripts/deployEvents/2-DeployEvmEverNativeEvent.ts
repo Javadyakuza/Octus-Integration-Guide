@@ -8,7 +8,7 @@ import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationN } from "../../constants";
 /**
  * @description at this module we will deploy MultiVaultEVMEverscaleEventNativeEvent contract in order to complete the deposit proccess on
- * evm network in order to perform a transfer a ever native token from evm network to ever.
+ * evm network in order to perform a transfer for an ever native token from evm network to everscale.
  * BRIDGE token is used in this particualr example
  */
 async function deployNativeEvent(evmTxHash: string) {

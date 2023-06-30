@@ -1,4 +1,4 @@
-## sample tx hashes done by these scripts at this folder
+## sample tx hashes done by scripts at this folder
 
 | operation              | tx hash                                                            | eventContract                                                      |
 | ---------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |

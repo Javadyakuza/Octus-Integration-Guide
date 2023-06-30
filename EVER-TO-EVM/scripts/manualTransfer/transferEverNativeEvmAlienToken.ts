@@ -30,10 +30,7 @@ async function transferEverAlienToken(): Promise<Transaction | unknown> {
     );
   // getting the payload
   const USDTTransferAmount: number = 0.01;
-  const burnPayload: [string, string] = await buildBurnPayload(
-    constants.EvmReceiver,
-    constants.TargetTokenRootAlienEvmUSDT,
-  );
+  const burnPayload: string = await buildBurnPayload(constants.EvmReceiver, constants.TargetTokenRootAlienEvmUSDT);
   console.log(burnPayload);
   // burning
   try {
@@ -41,7 +38,7 @@ async function transferEverAlienToken(): Promise<Transaction | unknown> {
       .burn({
         amount: ethers.parseUnits(USDTTransferAmount.toString(), 6).toString(),
         callbackTo: constants.MergePool_V4,
-        payload: burnPayload[0],
+        payload: burnPayload,
         remainingGasTo: constants.EventCloser,
       })
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmAutoRelease, bounce: true });

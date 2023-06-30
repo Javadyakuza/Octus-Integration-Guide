@@ -21,6 +21,7 @@
     "hardhat": "^2.16.0"
   },
   "dependencies": {
+    "web3": "^4.0.2",
     "dotenv": "^16.3.1",
     "eth-ton-abi-converter": "^0.5.2",
     "@nomicfoundation/hardhat-toolbox": "^3.0.0"

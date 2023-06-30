@@ -5,7 +5,10 @@ import { Address } from "locklift";
  * @param evmRecipient receiver EvmAddress
  * @returns burn payload string
  */
-export async function buildBurnPayload(evmRecipient: string, TargetTokenRootAlienEvm: Address): Promise<string> {
+export async function buildBurnPayload(
+  evmRecipient: string,
+  TargetTokenRootAlienEvm: Address,
+): Promise<[string, string]> {
   const operationPayload = await locklift.provider.packIntoCell({
     data: {
       addr: evmRecipient,
@@ -39,10 +42,10 @@ export async function buildBurnPayload(evmRecipient: string, TargetTokenRootAlie
       { name: "withdrawPayload", type: "cell" },
     ] as const,
   });
-
+  let randNonce = getRandomUint();
   const data = await locklift.provider.packIntoCell({
     data: {
-      nonce: getRandomUint(),
+      nonce: randNonce,
       type: 0,
       targetToken: TargetTokenRootAlienEvm, // TokenRootAlienEvm, different with normal tip3 tokens in everscale.
       operationPayload: payload.boc,
@@ -54,5 +57,5 @@ export async function buildBurnPayload(evmRecipient: string, TargetTokenRootAlie
       { name: "operationPayload", type: "cell" },
     ] as const,
   });
-  return data.boc;
+  return [data.boc, randNonce];
 }

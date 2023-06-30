@@ -38,44 +38,6 @@ at the EVM to EVER direction the operation's on the EVM network are as follows :
 
 - releasing token if ever native token and minting if evm alien token.
 
-## EVER TO EVM EVENTS
-
-there is two types of event contracts at this direction that will be deployed on everscale.
-
-- `MultiVaultEverscaleEVMEventNative`
-- `MultiVaultEverscaleEVMEventAlien`
-  these type of evetns are made to emit the `Confirmed` event and then get closed.\
-
-these event contracts are deployed by [`EverscaleEthereumEventConfiguration`](#everscaleethereumeventconfiguration) contract which is deployed by [`EverscaleEthereumEventConfigurationFactory`](./addresses.md#contractaddresses)
-
-> see also [EVM TO EVEVR EVENTS](#evm-to-ever-events)
-
-## EverscaleEthereumEventConfiguration
-
-this contract has two types, one type deployes `MultiVaultEverscaleEVMEventNative` contracts and another type deploys `MultiVaultEverscaleEVMEventAlien`.
-
-`MultiVaultEverscaleEVMEventNative` deployer `EverscaleEthereumEventConfiguration` contract `deployEvent` function is only callable by `ProxyMultiVaultNative_V4`
-
-`MultiVaultEverscaleEVMEventAlien` deployer `EverscaleEthereumEventConfiguration` contract `deployEvent` function is only callable by `ProxyMultiVaultAlien_V7`
-
-`MultiVaultEverscaleEVMEventNative` is deployed when transfering a ever native token and `MultiVaultEverscaleEVMEventAlien` are deployed when transfering ever alien token.
-
-> In the EVER -> EVM direction, only the ProxyMV's has the duty of deploying the event, and the user is not needed to do that.
-
-## credit backend
-
-- Credit backends are a set of backend scripts that, in addition to their other responsibilities, are responsible for deploying event contracts, manually equalizing balances between associated networks during a transaction and [releasing or minting](#operational-differences-between-alien-tokens-and-native-tokens-in-everscale) tokens on recipient network.
-
-### [EVM-to-EVER ⏎](./EVM-to-EVER.md)
-
-# EVER to EVM Concepts
-
-## EVM Network operations
-
-at the EVER to EVM direction the operation's on the EVM network are as follows :
-
-- minting if evm native token and releasing if alien token.
-
 ## EVM TO EVER EVENTS
 
 there is two types of event contracts at this direction that will be deployed on everscale.
@@ -97,6 +59,44 @@ these contracts can be called by the user with `deploEvent` function or by the c
 `MultiVaultEVMEverscaleEventNative` is deployed when transfering a ever native token and `MultiVaultEVMEverscaleEventAlien` are deployed when transfering ever alien token.
 
 #### `EthereumEverscaleEventConfiguration` contract has two deployed version for each network, we are supporting 6 network's except evescale right now so we have 12 `EthereumEverscaleEventConfiguration` contrat's, all these addresses can be found [here](./addresses.md)
+
+## credit backend
+
+- Credit backends are a set of backend scripts that, in addition to their other responsibilities, are responsible for deploying event contracts, manually equalizing balances between associated networks during a transaction and [releasing or minting](#operational-differences-between-alien-tokens-and-native-tokens-in-everscale) tokens on recipient network.
+
+### [EVM-to-EVER ⏎](./EVM-to-EVER.md)
+
+# EVER to EVM Concepts
+
+## EVM Network operations
+
+at the EVER to EVM direction the operation's on the EVM network are as follows :
+
+- minting if evm native token and releasing if alien token.
+
+## EVER TO EVM EVENTS
+
+there is two types of event contracts at this direction that will be deployed on everscale.
+
+- `MultiVaultEverscaleEVMEventNative`
+- `MultiVaultEverscaleEVMEventAlien`
+  these type of evetns are made to emit the `Confirmed` event and then get closed.
+
+these event contracts are deployed by [`EverscaleEthereumEventConfiguration`](#everscaleethereumeventconfiguration) contract which is deployed by [`EverscaleEthereumEventConfigurationFactory`](./addresses.md#contractaddresses)
+
+> see also [EVM TO EVEVR EVENTS](#evm-to-ever-events)
+
+## EverscaleEthereumEventConfiguration
+
+this contract has two types, one type deployes `MultiVaultEverscaleEVMEventNative` contracts and another type deploys `MultiVaultEverscaleEVMEventAlien`.
+
+`MultiVaultEverscaleEVMEventNative` deployer `EverscaleEthereumEventConfiguration` contract `deployEvent` function is only callable by `ProxyMultiVaultNative_V4`
+
+`MultiVaultEverscaleEVMEventAlien` deployer `EverscaleEthereumEventConfiguration` contract `deployEvent` function is only callable by `ProxyMultiVaultAlien_V7`
+
+`MultiVaultEverscaleEVMEventNative` is deployed when transfering a ever native token and `MultiVaultEverscaleEVMEventAlien` are deployed when transfering ever alien token.
+
+> In the EVER -> EVM direction, only the ProxyMV's has the duty of deploying the event, and the user is not needed to do that.
 
 ### [EVER-to-EVM ⏎](./EVER-to-EVM.md)
 

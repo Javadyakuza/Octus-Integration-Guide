@@ -15,8 +15,7 @@ const VENOM_TESTNET_TRACE_ENDPOINT =
 // Create your own link on https://dashboard.evercloud.dev/
 const MAIN_NET_NETWORK_ENDPOINT = process.env.MAIN_NET_NETWORK_ENDPOINT || "https://mainnet.evercloud.dev/XXX/graphql";
 const EVERSCALE_NETWORK_ENDPOINT =
-  process.env.MAIN_NET_NETWORK_ENDPOINT || "https://mainnet.evercloud.dev/b782a580e9984154bc827d224d6ddfe7/graphql";
-
+  process.env.MAIN_NET_NETWORK_ENDPOINT || "https://mainnet.evercloud.dev/2fa2d7e278194d12addcfb70313884be/graphql";
 const config: LockliftConfig = {
   compiler: {
     // Specify path to your TON-Solidity-Compiler

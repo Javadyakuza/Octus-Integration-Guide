@@ -21,8 +21,9 @@ async function TransferEVMeverNativeToken(): Promise<ContractTransactionResponse
   MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
   // deposititng
-  const MultiVaultNativeDeposit =
-    MultiVault.connect(evmSigner)["depositByNativeToken(((int8,uint256),uint256,uint256,bytes))"];
+  const MultiVaultNativeDeposit = await MultiVault.connect(evmSigner)[
+    "depositByNativeToken(((int8,uint256),uint256,uint256,bytes))"
+  ];
 
   const amount = ethers.parseEther("0.00001");
 

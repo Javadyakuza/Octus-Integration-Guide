@@ -25,6 +25,15 @@
 | Solana    | ---           | 0x0                                                                | 0                                                                  |
 | Avalanche | ---           | 0:f07e44eb5507527c7527b4399d9cef220c0fcf50c6a4db71b3517bd763fdc528 | 0:124457db37ea02f2b7c5575b86f759e51f02adc11cbf36b36fd1da6c36fc82f6 |
 
+> ### this table contains EthereumEverscaleEventConfiguration contract addresses for everscale native/alien token transfering events and each network.
+
+| ---     | contract name | EverscaleEthereumEventConfiguration(netive event)                  | EverscaleEthereumEventConfiguration(alien event)                    |
+| ------- | ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| network | ---           | ---                                                                | ---                                                                 |
+| global  | ---           | 0:a8698f1a9bd48201b1eafcb6975b90b60867063ffff3cc7114a480f924999b75 | 0:6b7e3255de478ff6b5d441235e6ea6c43764f897dd761d56c2fdf67199d80cf86 |
+
+> opposite of the ethereumEverscaleEventConfigurations, the EverscaleEthereumEventConfigurations are having jsut two addresses on everscale which supports all evm networks.
+
 ## TokensAddress
 
 0:6b7e3255de478ff6b5d441235e6ea6c43764f897dd761d56c2fdf7199d80cf86

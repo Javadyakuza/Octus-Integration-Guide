@@ -27,7 +27,9 @@ async function TransferEVMeverAlienToken(): Promise<ContractTransactionResponse 
     await AlienToken.allowance(evmSigner.address, await MultiVault.getAddress()),
   );
   // deposititng
-  const MultiVaultDeposit = MultiVault.connect(evmSigner)["deposit(((int8,uint256),address,uint256,uint256,bytes))"];
+  const MultiVaultDeposit = await MultiVault.connect(evmSigner)[
+    "deposit(((int8,uint256),address,uint256,uint256,bytes))"
+  ];
 
   const amount = ethers.parseEther("0.1");
 
