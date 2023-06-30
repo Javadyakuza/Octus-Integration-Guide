@@ -1,11 +1,12 @@
 import * as EVER from "everscale-standalone-client";
 import { Contract, Signer, Address, Transaction } from "locklift";
 import { ethers } from "hardhat";
-import { buildBurnPayload } from "../helpers/buildBurnPayload";
+import { buildBurnPayloadForEvmAlienToken } from "../helpers/buildBurnPayload";
 import { buildSaveWithdraw } from "../helpers/buildSaveWithdrawPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
-import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
+import { getSignatures } from "../helpers/getSignatures";
+// import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
 import { fetchAlienEventAddressFromOriginTxHash } from "../helpers/deriveEventAddressFromOriginHash";
 /**
  * this module performs transfering an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken funtcion.
@@ -39,7 +40,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
     );
   // getting the payload
   const USDTTransferAmount: number = 0.01;
-  const burnPayload: [string, string] = await buildBurnPayload(
+  const burnPayload: [string, string] = await buildBurnPayloadForEvmAlienToken(
     constants.EvmReceiver,
     constants.TargetTokenRootAlienEvmUSDT,
   ); // first str is payload and second str is randomNonce
@@ -57,7 +58,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
 
     console.log("succesfull, tx hash: ", res?.id.hash);
     // getting the event contract address
-    const eventAddress: Address = await fetchAlienEventAddressFromOriginTxHash(res?.id.hash);
+    const eventAddress: Address | undefined = await fetchAlienEventAddressFromOriginTxHash(res?.id.hash)!;
     // getting the event contract address
     // const eventAddress: Address = await deriveEverEvmAlienEventAddress(
     //   deployEventTxHash,
@@ -70,12 +71,12 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
     // );
     // loading event contract
     const eventContract: Contract<FactorySource["EverscaleEthereumBaseEvent"]> =
-      await locklift.factory.getDeployedContract("EverscaleEthereumBaseEvent", eventAddress);
+      await locklift.factory.getDeployedContract("EverscaleEthereumBaseEvent", eventAddress!);
     eventContract.events;
     // preparing payload for `saveWithdrawAlien`
-    const payload: string = await buildSaveWithdraw(eventAddress);
+    const payload: string = await buildSaveWithdraw(eventAddress!);
     // fetching the signatures for `saveWithdrawAlien`
-    let signatures: string[] = (await eventContract.methods.getDetails({ answerId: 0 }).call({}))._signatures;
+    let signatures: string[] = await getSignatures(eventContract);
     console.log([payload, , signatures]);
     // after this step we have get payload and sigs and pass them to the saveWithdraawAlien
     return [payload, , signatures];

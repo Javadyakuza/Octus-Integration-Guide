@@ -3,7 +3,12 @@ import BigNumber from "bignumber.js";
 import { ContractTransactionResponse } from "ethers/src.ts/ethers";
 import * as Contracts from "../../typechain-types/index";
 import { deployedContracts } from "../../constants";
-import { SamplePayloadEverAlienEvmAlien, SampleSignaturesEverAlienEvmAlien } from "./values";
+import {
+  SamplePayloadEverAlienEvmAlien,
+  SampleSignaturesEverAlienEvmAlien,
+  SamplePayloadEverAlienEvmNative,
+  SampleSignaturesEverAlienEvmNative,
+} from "./values";
 import * as web3 from "web3";
 require("dotenv").config();
 
@@ -16,10 +21,10 @@ export async function saveWithdrawAlien(): Promise<ContractTransactionResponse |
   // attaching them to on-chain addresses
   MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
-  const signatures = SampleSignaturesEverAlienEvmAlien.map(sign => {
+  const signatures = SampleSignaturesEverAlienEvmNative.map(sign => {
     const signature = `0x${Buffer.from(sign, "base64").toString("hex")}`;
     const address = web3.eth.accounts.recover(
-      web3.utils.sha3(SamplePayloadEverAlienEvmAlien as string) as string,
+      web3.utils.sha3(SamplePayloadEverAlienEvmNative as string) as string,
       signature,
     );
     return {
@@ -44,7 +49,7 @@ export async function saveWithdrawAlien(): Promise<ContractTransactionResponse |
   MultiVault = await MultiVault.connect(evmSigner);
   try {
     const res = await MultiVault.saveWithdrawAlien(
-      SamplePayloadEverAlienEvmAlien,
+      SamplePayloadEverAlienEvmNative,
       signatures.map(({ signature }) => signature),
     );
     console.log("tx hash ; ", res?.hash);

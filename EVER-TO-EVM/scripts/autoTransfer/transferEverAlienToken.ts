@@ -1,7 +1,7 @@
 import * as EVER from "everscale-standalone-client";
 import { Contract, Signer, Transaction } from "locklift";
 import { ethers } from "hardhat";
-import { buildBurnPayload } from "../helpers/buildBurnPayload";
+import { buildBurnPayloadForEvmAlienToken } from "../helpers/buildBurnPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
 /**
@@ -30,7 +30,7 @@ async function transferEverAlienToken(): Promise<Transaction | unknown> {
     );
   // getting the payload
   const USDTTransferAmount: number = 0.01;
-  const burnPayload: [string, string] = await buildBurnPayload(
+  const burnPayload: [string, string] = await buildBurnPayloadForEvmAlienToken(
     constants.EvmReceiver,
     constants.TargetTokenRootAlienEvmUSDT,
   );

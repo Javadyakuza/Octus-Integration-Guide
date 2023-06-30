@@ -1,11 +1,13 @@
 import { getRandomUint } from "./randuint";
 import { Address } from "locklift";
+import * as constants from "../../constants";
+import * as Web3 from "web3";
 /**
- * buildBurnPayload function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
+ * buildBurnPayloadForEvmAlienToken function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
  * @param evmRecipient receiver EvmAddress
  * @returns burn payload string
  */
-export async function buildBurnPayload(
+export async function buildBurnPayloadForEvmAlienToken(
   evmRecipient: string,
   TargetTokenRootAlienEvm: Address,
 ): Promise<[string, string]> {
@@ -57,5 +59,50 @@ export async function buildBurnPayload(
       { name: "operationPayload", type: "cell" },
     ] as const,
   });
+  return [data.boc, randNonce];
+}
+/**
+ * buildBurnPayloadForEvmnativeToken function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
+ * @param evmRecipient receiver EvmAddress
+ * @returns burn payload string
+ */
+export async function buildBurnPayloadForEvmnativeToken(evmRecipient: string): Promise<[string, string]> {
+  const burnPayload = await locklift.provider.packIntoCell({
+    data: {
+      addr: constants.Unwrapper,
+      callback: {
+        recipient: constants.Unwrapper,
+        payload: Web3.eth.abi.encodeParameters(["address"], [evmRecipient]) ?? "",
+        strict: false,
+      },
+    },
+    structure: [
+      { name: "addr", type: "uint160" },
+      {
+        name: "callback",
+        type: "tuple",
+        components: [
+          { name: "recipient", type: "uint160" },
+          { name: "payload", type: "bytes" },
+          { name: "strict", type: "bool" },
+        ] as const,
+      },
+    ] as const,
+  });
+
+  let randNonce: string = getRandomUint();
+  const data = await locklift.provider.packIntoCell({
+    data: {
+      nonce: randNonce,
+      network: 1,
+      burnPayload: burnPayload.boc,
+    },
+    structure: [
+      { name: "nonce", type: "uint32" },
+      { name: "network", type: "uint8" },
+      { name: "burnPayload", type: "cell" },
+    ] as const,
+  });
+
   return [data.boc, randNonce];
 }
