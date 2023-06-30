@@ -65,6 +65,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
       ethers.parseUnits(USDTTransferAmount.toString(), 18).toString(), // decimals is 18 because the final token at mergepool is an evmToken
       constants.EvmReceiver,
       everWallet.address,
+      constants.TargetTokenRootAlienEvmUSDT,
     );
     // loading event contract
     const eventContract: Contract<FactorySource["EverscaleEthereumBaseEvent"]> =
