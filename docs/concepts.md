@@ -75,6 +75,15 @@ at the EVM -> EVER direction the operation's on the everscale as follows :
 
 - In EVM -> EVER direction assets will be released or minted on everscale by attaching enough evm native coin to tx and setting the expected_ever to event contract initial balance. how to set [expected_evers](./FAQ.md#how-to-set-expected_evers)
 
+### Directions
+
+Following table contains operations that are done at each network to perform Crosschain transfer
+
+| Direction   | What happens on Everscale                    | What happens on EVM                                                             |
+| ----------- | -------------------------------------------- | ------------------------------------------------------------------------------- |
+| EVM -> EVER | Release(Native Token/Coin) Mint(Alien Token) | Burn(MultiVault Token) - Wrap and Lock(Native Coin) - Lock(Aline token)         |
+| EVER -> EVM | Lock(Native Token/Coin) Burn(Alien Token)    | Mint(MultiVault Token) - Unwrap and Release(Native Coin) - Release(Aline token) |
+
 ---
 
 # EVENTS
@@ -129,11 +138,11 @@ this contract has two versions, one deployes `MultiVaultEverscaleEVMEventNative`
 
 # PAYLOADS
 
-Octus Bridge provides a feature to attach payload to bridge transfer's in order to perform many operations such as swapping, arbitrage, and more.
+### Octus Bridge provides a feature to attach payload to bridge transfer's in order to perform various operations such as swapping, arbitrage, and more.
 
-For token transfers at EVM -> EVER direction payloads can be empty.
+### For token transfers at EVM -> EVER direction payloads can be empty.
 
-For token transfers in EVER -> EVM payloads are needed, their recipe's can be found below :
+### For token transfers at EVER -> EVM payloads are needed, their recipe's can be found below :
 
 - ### Transfer EVER : [wrap payload](../EVER-TO-EVM/scripts/helpers/buildWrapPayload.ts)
 - ### Transfer Native Token : [transer payload](../EVER-TO-EVM/scripts/helpers/buildTransferPayload.ts)
