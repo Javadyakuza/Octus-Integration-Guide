@@ -32,11 +32,11 @@ Tokens that are everscale native token or coin. Examples include **WEVER**, **BR
 
 at the EVER -> EVM direction the operation's on the EVM network are as follows :
 
-- minting if evm native token and releasing if alien token.
+- minting if evm MultiVault token and releasing if alien or native token, native token will be released as its wrapped version.
 
 ### Approving Alien ERC-20 Tokens
 
-If the target token being transferred from EVM to Everscale is **non-everscale native** and **ERC-20 token**, it's necessary to approve the "Multivault" contract at the first in order to transfer the amount of target token to itself. If the transferable token is the EVM network's native coin, we must attach the desired amount of native coin to tx and call the `depositbyNativeCcoin`.
+If the target token being transferred from EVM to Everscale is **non-everscale native** (MultiVault Token) and **ERC-20 token**, it's necessary to approve the "Multivault" contract at the first in order to transfer the amount of target token to itself. If the transferable token is the EVM network's native coin, we must attach the desired amount of native coin to tx and call the `depositbyNativeCoin`.
 
 ### Event Contract Deploy Value (Expected_Evers)
 
@@ -59,8 +59,8 @@ at the EVM -> EVER direction the operation's on the everscale as follows :
 ## Operational Differences Between Alien Tokens and Native Tokens in Everscale
 
 - EVER -> EVM \
-  When transfering a everscale native token, it will be locked on everscale and released on evm network.\
-  when transfering a everscale alien token it will be burnt on everscale and released on evm network if alien evm token, and minted if evm native token on evm network.
+  When transfering a everscale native token, it will be locked on everscale and minted on evm network because its and MultiVault token on evm.\
+  when transfering a everscale alien token it will be burnt on everscale and released on evm network, in case the token be evm native coin it will be released as its wrapped version.
 
 - EVM -> EVER \
   When transfering the evm native coin, it will be wrapped into a ERC-20 (WETH, WBNB and etc), then will be locked on evm network and minted on everscale network.
@@ -121,7 +121,7 @@ this contract has two versions, one deployes `MultiVaultEverscaleEVMEventNative`
 
 # PAYLOADS
 
-Octus Bridge provides a feature to attach payload to bridge transfer's in order to perform many operations such as swapping, flash loans, and more.
+Octus Bridge provides a feature to attach payload to bridge transfer's in order to perform many operations such as swapping, arbitrage, and more.
 
 For token transfers at EVM -> EVER direction payloads can be empty.
 
