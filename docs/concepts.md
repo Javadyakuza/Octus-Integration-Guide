@@ -60,11 +60,12 @@ at the EVM -> EVER direction the operation's on the everscale as follows :
 
 - EVER -> EVM \
   When transfering a everscale native token, it will be locked on everscale and released on evm network.\
-  when transfering an everscale alien token it will be burnt on everscale and released on evm network if alien evm token, and minted if evm native token on evm network.
+  when transfering a everscale alien token it will be burnt on everscale and released on evm network if alien evm token, and minted if evm native token on evm network.
 
 - EVM -> EVER \
-  When transfering the evm native coin, it will be burnt on evm network and minted on everscale.\
-  when transfering an evm alien token it will be locked on evm and released on everscale if everscale native token and minted if everscale alien token on everscale.
+  When transfering the evm native coin, it will be wrapped into a ERC-20 (WETH, WBNB and etc), then will be locked on evm network and minted on everscale network.
+  when transfering an evm alien and non-multivault token it will be locked on evm and minted on everscale network.
+  When transfering an evm MultiVault Token (WEVER, BRIDGE and QUBE), it will be burnt on evm network and released on everscale network.
 
 ---
 
