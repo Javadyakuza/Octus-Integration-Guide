@@ -1,8 +1,8 @@
-# EVER to EVM tranfer mechanics overview
+# EVER to EVM transfer mechanics overview
 
-1 - locking target token in everscale if everscale native token and burning it if everscale alien token. see [everscale token types](./concepts.md#everscale-token-types).
+1 - locking target token in EVERSCALE if EVERSCALE native token and burning it if EVERSCALE alien token. see [EVERSCALE token types](./concepts.md#EVERSCALE-token-types).
 
-2 - through previous transaction the event contract is deployed on everscale and after few second the relayers will confirm it by voting to the event contract.
+2 - through previous transaction the event contract is deployed on EVERSCALE and after few second the relayers will confirm it by voting to the event contract.
 
 3.1 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with EVER, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm MultiVault token or release it if evm alien or native token, the native token will be released as its wrapped version so all we can do at this point is to wait.
 
@@ -10,13 +10,13 @@
 
 4 - at this point the desired amount of target token most be deposited to recepient EVM address.
 
-> #### NOTICE : all fo the refrenced contracts addresses can be found at [addresses.md](./addresses.md).
+> #### NOTICE : all fo the referenced contracts addresses can be found at [addresses.md](./addresses.md).
 
 # EVER to EVM transfer integration step by step
 
-### Transfering EVER
+### Transferring EVER
 
-- 1 - we call the `wrap` method on the [`Vault`](./addresses.md#everscale-smart-contracts) contract and lock our newly minted WEVER in eversale:
+- 1 - we call the `wrap` method on the [`Vault`](./addresses.md#EVERSCALE-smart-contracts) contract and lock our newly minted WEVER in EVERSCALE:
 
 ### Function
 
@@ -31,14 +31,14 @@
 
 ### Parameters
 
-| param            | descritption                                                                        |
+| param            | description                                                                         |
 | ---------------- | ----------------------------------------------------------------------------------- |
 | tokens           | amount of the target transferable token                                             |
-| owner_addres     | [Compounder](./addresses.md#everscale-smart-contracts)                              |
-| gas_back_address | addresse to send the change back                                                    |
+| owner_address    | [Compounder](./addresses.md#EVERSCALE-smart-contracts)                              |
+| gas_back_address | addresses to send the change back                                                   |
 | payload          | operational payload, see [wrap payload](./concepts.md#transfer-ever--wrap-payload). |
 
-> NOTE : gas_back_address will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#everscale-smart-contracts) if paying with ever.
+> NOTE : gas_back_address will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
@@ -55,14 +55,14 @@
 
 ### Parameters
 
-| param      | descritption                                                                                              |
+| param      | description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | payload    | operational payload, see [payload](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative).   |
 | signatures | relayers signatures see [signatures](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative). |
 
 ---
 
-### Transfering [native token](./concepts.md#native-tokens)
+### Transferring [native token](./concepts.md#native-tokens)
 
 > ## `BRIDGE` is used in this example.
 
@@ -83,16 +83,16 @@
 
 ### Parameters
 
-| param             | descritption                                                                                        |
+| param             | description                                                                                         |
 | ----------------- | --------------------------------------------------------------------------------------------------- |
 | amount            | amount of the target transferable token                                                             |
-| recipient         | recipient address which is [proxyMVnative](./addresses.md#everscale-smart-contracts)                |
+| recipient         | recipient address which is [proxyMVnative](./addresses.md#EVERSCALE-smart-contracts)                |
 | deployWalletValue | Token Wallet deploy value if not deployed before                                                    |
 | remainingGasTo    | Remaining gas receiver                                                                              |
 | notify            | Notify receiver on incoming transfer                                                                |
 | payload           | Notification payload, see [transfer payload](./concepts.md#transfer-native-token--transer-payload). |
 
-> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#everscale-smart-contracts) if paying with ever.
+> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
@@ -109,18 +109,18 @@
 
 ### Parameters
 
-| param      | descritption                                                                                              |
+| param      | description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | payload    | operational payload, see [payload](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative).   |
 | signatures | relayers signatures see [signatures](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative). |
 
 ---
 
-### Transfering Alien Token
+### Transferring Alien Token
 
 > ## `USDT` is used in this example.
 
-1 - first we have to burn the token on everscale network by calling the `burn` function on our `tokenWallet` contract :
+1 - first we have to burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
 
 ### Function
 
@@ -135,14 +135,14 @@
 
 ### Parameters
 
-| param          | descritption                                                                                     |
+| param          | description                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------------------ |
 | amount         | amount of the target token token                                                                 |
-| callBackTo     | callback Recivier contract.[MergePoolV_4](./addresses.md#everscale-smart-contracts) in this case |
+| callBackTo     | callback Receiver contract.[MergePoolV_4](./addresses.md#EVERSCALE-smart-contracts) in this case |
 | remainingGasTo | Remaining gas receiver                                                                           |
 | payload        | operational payload, see [burn payload](./concepts.md#transfer-alien-token--burn-payload).       |
 
-> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#everscale-smart-contracts) if paying with ever.
+> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
@@ -159,18 +159,18 @@
 
 ### Parameters
 
-| param      | descritption                                                                                              |
+| param      | description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | payload    | operational payload, see [payload](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative).   |
 | signatures | relayers signatures see [signatures](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative). |
 
 ---
 
-### Transfering Alien Token
+### Transferring Alien Token
 
 > ## `WBNB` is used in this example.
 
-1 - first we have to burn the token on everscale network by calling the `burn` function on our `tokenWallet` contract :
+1 - first we have to burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
 
 ### Function
 
@@ -185,14 +185,14 @@
 
 ### Parameters
 
-| param          | descritption                                                                                        |
+| param          | description                                                                                         |
 | -------------- | --------------------------------------------------------------------------------------------------- |
 | amount         | amount of the target transferable token                                                             |
-| callBackTo     | callback Recivier contract.[ProxyMVAlienV_7](./addresses.md#everscale-smart-contracts) in this case |
+| callBackTo     | callback Receiver contract.[ProxyMVAlienV_7](./addresses.md#EVERSCALE-smart-contracts) in this case |
 | remainingGasTo | Remaining gas receiver                                                                              |
 | payload        | operational payload, see [burn payload](./concepts.md#transfer-alien-token--burn-payload).          |
 
-> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#everscale-smart-contracts) if paying with ever.
+> NOTE : remainingGasTo will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
@@ -209,7 +209,7 @@
 
 ### Parameters
 
-| param      | descritption                                                                                              |
+| param      | description                                                                                               |
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | payload    | operational payload, see [payload](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative).   |
 | signatures | relayers signatures see [signatures](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative). |
