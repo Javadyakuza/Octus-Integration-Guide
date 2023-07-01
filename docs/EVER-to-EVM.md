@@ -1,12 +1,12 @@
 # EVER to EVM tranfer mechanics overview
 
-1 - locking target token in everscale if everscale native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
+1 - locking target token in everscale if everscale native token and burning it if everscale alien token. see [everscale token types](./concepts.md#everscale-token-types).
 
 2 - through previous transaction the event contract is deployed on everscale and after few second the relayers will confirm it by voting to the event contract.
 
-3.1 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with ever, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm native token or release it if evm alien token, so all we can do at this point is to wait.
+3.1 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with EVER, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm MultiVault token or release it if evm alien or native token, the native token will be released as its wrapped version so all we can do at this point is to wait.
 
-3.2 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm native token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVaultFacetWithdraw` contract.
+3.2 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm MultiVault token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVault` contract if the token was an alien or native evm token.
 
 4 - at this point the desired amount of target token most be deposited to recepient EVM address.
 
@@ -42,7 +42,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - releasing `WEVER` in the evm network by calling the `saveWithdrawNative` :
+- 2 - minting `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
 ### Function
 
@@ -96,7 +96,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - releasing `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
+- 2 - minting `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
 
 ### Function
 
@@ -196,7 +196,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - minting `BNB` in the evm network by calling the `saveWithdrawAlien` :
+- 2 - releasing `BNB` in its wrapped version in evm network by calling the `saveWithdrawAlien` :
 
 ### Function
 

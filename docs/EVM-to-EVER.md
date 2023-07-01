@@ -5,12 +5,13 @@
 2. Through the previous operation, two events will be emitted. one of them is always `Deposit` and another one depended on the situation is either `AlienTransfer` or `NativeTransfer`.\
    see [alien ERC-20 token approve ](./concepts.md#approving-alien-erc-20-tokens).
 3. Once depositing the target token to MultiVault is done, it's time for deploying an event Contract on the Everscale network.\
-   relayers will vote on event contract and confirm the deposit in evm network and releasing if everscale native token and minting if alien token.
+   relayers will vote on event contract and confirm the deposit in evm network.\
+   Now the event contract is confirmed, following steps can be performed based on their situation :
 
    - 3.1: If the user at the time of deposit wanted to pay the everscale [operations](./concepts.md#ever-network-operations) gas fees with the origin EVM network native coin, user must attach enough evm native coin to tx, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and deploys the event contract.
-     in order to perform such a operation we must set [expexte_evers](./concepts.md#event-contract-deploy-value-expected_evers) to a [certain amount](FAQ.md#how-to-set-expected_evers).
+     in order to perform such a operation, besides attachong sufficient value to tx, we must set [expexte_evers](./concepts.md#event-contract-deploy-value-expected_evers) to a [certain amount](FAQ.md#how-to-set-expected_evers).
 
-   - 3.2: If the user has chosen to pay the everscale [operations](./concepts.md#ever-network-operations) gas fee with ever, which is operatable by not attachong enough evm native coin or setting expected_evers to a wrong value, now it's time for the user to deploy the event contract itself. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum confirm votes by relayers the token will be released if ever native Token and minted if ever alien token.
+   - 3.2: If the user has chosen to pay the everscale [operations](./concepts.md#ever-network-operations) gas fee with ever, which is operatable by not attachong enough evm native coin and setting expected_evers to a wrong value, it's time for the user to deploy the event contract manually. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum confirm votes by relayers the token will be released if ever native Token and minted if ever alien token.
 
 > NOTICE : all fo the refrenced contracts addresses can be found at [addresses.md](./addresses.md).
 
