@@ -13,7 +13,7 @@
 
    - 3.2: If the user has chosen to pay the EVERSCALE [operations](./concepts.md#ever-network-operations) gas fee with ever, which is operable by not attaching enough evm native coin and setting expected_evers to a wrong value, it's time for the user to deploy the event contract manually. Such an operation will be done calling `deployEvent` on `EthereumEverscaleEventConfiguration` which deploys an event contract and after exceeding the quorum confirm votes by relayers the token will be released if ever native Token and minted if ever alien token.
 
-> NOTICE : all fo the referenced contracts addresses can be found at [addresses.md](./addresses.md).
+> NOTICE : all of the referenced contracts addresses can be found at [addresses.md](./addresses.md).
 
 # EVM to EVER Transfer Integration Step-by-Step
 

@@ -1,22 +1,23 @@
 # EVER to EVM transfer mechanics overview
 
-1 - locking target token in EVERSCALE if EVERSCALE native token and burning it if EVERSCALE alien token. see [EVERSCALE token types](./concepts.md#EVERSCALE-token-types).
+1 - Locking the target token in EVERSCALE if EVERSCALE native token and burning it if EVERSCALE alien token. see [EVERSCALE token types](./concepts.md#EVERSCALE-token-types).
 
-2 - through previous transaction the event contract is deployed on EVERSCALE and after few second the relayers will confirm it by voting to the event contract.
+2 - Through previous transaction the event contract is deployed on EVERSCALE and after few second the relayers will confirm it by voting on the event contract.
 
-3.1 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with EVER, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm MultiVault token or release it if evm alien or native token, the native token will be released as its wrapped version so all we can do at this point is to wait.
+3.1 : If paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with EVER, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm MultiVault token or release it if evm alien or native token, so all we can do at this point is to wait. \
+Note that the native token will be released as its wrapped version.
 
-3.2 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm MultiVault token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVault` contract if the token was an alien or native evm token.
+3.2 : If paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm MultiVault token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVault` contract if the token was an alien or native evm token.
 
-4 - at this point the desired amount of target token most be deposited to recepient EVM address.
+4 - At this point desired amount of target token most be deposited to recipient EVM address.
 
-> #### NOTICE : all fo the referenced contracts addresses can be found at [addresses.md](./addresses.md).
+> NOTICE : All of the referenced contracts addresses can be found at [addresses.md](./addresses.md).
 
 # EVER to EVM transfer integration step by step
 
 ### Transferring EVER
 
-- 1 - we call the `wrap` method on the [`Vault`](./addresses.md#EVERSCALE-smart-contracts) contract and lock our newly minted WEVER in EVERSCALE:
+- 1 - Call the `wrap` method on the [`Vault`](./addresses.md#EVERSCALE-smart-contracts) contract and lock our newly minted WEVER in EVERSCALE:
 
 ### Function
 
@@ -40,9 +41,9 @@
 
 > NOTE : gas_back_address will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
-### NOTE : continue if paying the evm network operations with its native coin !!
+### NOTE : Continue if paying the evm network operations with its native coin !!
 
-- 2 - minting `WEVER` in the evm network by calling the `saveWithdrawNative` :
+- 2 - Minting `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
 ### Function
 
@@ -66,7 +67,7 @@
 
 > ## `BRIDGE` is used in this example.
 
-1 - we have to lock the the target token to `ProxyMultiVaultNative`'s `TokenWallet` contract by calling the `transfer` function on our `TokenWallet` contract :
+1 - Lock the the target token to `ProxyMultiVaultNative`'s `TokenWallet` contract by calling the `transfer` function on our `TokenWallet` contract :
 
 ### Function
 
@@ -96,7 +97,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - minting `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
+- 2 - Mint `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
 
 ### Function
 
@@ -120,7 +121,7 @@
 
 > ## `USDT` is used in this example.
 
-1 - first we have to burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
+1 - Burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
 
 ### Function
 
@@ -146,7 +147,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - releasing `USDT` in the evm network by calling the `saveWithdrawAlien` :
+- 2 - Release `USDT` in the evm network by calling the `saveWithdrawAlien` :
 
 ### Function
 
@@ -170,7 +171,7 @@
 
 > ## `WBNB` is used in this example.
 
-1 - first we have to burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
+1 - Burn the token on EVERSCALE network by calling the `burn` function on our `tokenWallet` contract :
 
 ### Function
 
@@ -196,7 +197,7 @@
 
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - releasing `BNB` in its wrapped version in evm network by calling the `saveWithdrawAlien` :
+- 2 - Release `BNB` in its wrapped version in evm network by calling the `saveWithdrawAlien` :
 
 ### Function
 
