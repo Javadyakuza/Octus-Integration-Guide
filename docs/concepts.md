@@ -30,7 +30,7 @@ Tokens that are EVERSCALE native token or coin. Examples include **WEVER**, **BR
 
 ## EVM OPERATIONS
 
-at the EVER -> EVM direction the operation's on the EVM network are as follows :
+At the EVER -> EVM direction the operation's on the EVM network are as follows :
 
 - Minting: If the token is an EVM MultiVault token.
 
@@ -60,11 +60,11 @@ n the EVM to EVER direction, the following operations are performed on EVERSCALE
 
 - EVER -> EVM \
   When transferring a EVERSCALE native token, it will be locked on EVERSCALE and minted on evm network because its and MultiVault token on evm.\
-  when transferring a EVERSCALE alien token it will be burnt on EVERSCALE and released on evm network, in case the token be evm native coin it will be released as its wrapped version.
+  When transferring a EVERSCALE alien token it will be burnt on EVERSCALE and released on evm network, in case the token be evm native coin it will be released as its wrapped version.
 
 - EVM -> EVER \
   When transferring the evm native coin, it will be wrapped into a ERC-20 (WETH, WBNB and etc), then will be locked on evm network and minted on EVERSCALE network.
-  when transferring an evm alien and non-multivault token it will be locked on evm and minted on EVERSCALE network.
+  When transferring an evm alien and non-multivault token it will be locked on evm and minted on EVERSCALE network.
   When transferring an evm MultiVault Token (WEVER, BRIDGE and QUBE), it will be burnt on evm network and released on EVERSCALE network.
 
 ### Manual Asset releasing
@@ -95,7 +95,7 @@ Following table contains operations that are done at each network to perform Cro
 
 ## EVM TO EVER EVENTS
 
-there is two types of event contracts at mentioned direction that will be deployed on EVERSCALE.
+There is two types of event contracts at mentioned direction that will be deployed on EVERSCALE.
 
 - `MultiVaultEVMEverscaleEventNative`
 - `MultiVaultEVMEverscaleEventAlien`
@@ -105,9 +105,9 @@ which is deployed by [`EthereumEverscaleEventConfigurationFactory`](./addresses.
 
 ### EthereumEverscaleEventConfiguration
 
-this contract has two version, one deploys `MultiVaultEVMEverscaleEventNative` contracts and another one deploys `MultiVaultEVMEverscaleEventAlien`.
+This contract has two version, one deploys `MultiVaultEVMEverscaleEventNative` contracts and another one deploys `MultiVaultEVMEverscaleEventAlien`.
 
-these contracts can be called by the user with `deployEvent` function or by the [credit backend](#credit-backend) with `deployEvents`.
+These contracts can be called by the user with `deployEvent` function or by the [credit backend](#credit-backend) with `deployEvents`.
 
 `MultiVaultEVMEverscaleEventNative` is deployed when transferring a EVERSCALE native token and `MultiVaultEVMEverscaleEventAlien` are deployed when transferring EVERSCALE alien token.
 
@@ -115,13 +115,13 @@ these contracts can be called by the user with `deployEvent` function or by the 
 
 ## EVER TO EVM EVENTS
 
-there is two types of event contracts at this direction that will be deployed on EVERSCALE.
+There is two types of event contracts at this direction that will be deployed on EVERSCALE.
 
 - `MultiVaultEverscaleEVMEventNative`
 - `MultiVaultEverscaleEVMEventAlien`
 
-deployer of these contract's is [`EverscaleEthereumEventConfiguration`](#EverscaleEthereumeventconfiguration) contract, \
- which is deployed by [`EverscaleEthereumEventConfigurationFactory`](./addresses.md#contractaddresses).
+Deployer of these contract's is [`EverscaleEthereumEventConfiguration`](#EverscaleEthereumeventconfiguration) contract, \
+ Which is deployed by [`EverscaleEthereumEventConfigurationFactory`](./addresses.md#contractaddresses).
 
 ### EverscaleEthereumEventConfiguration
 
@@ -153,6 +153,6 @@ this contract has two versions, one deploys `MultiVaultEverscaleEVMEventNative` 
 - ### Transfer Native Token : [transfer payload](../EVER-TO-EVM/scripts/helpers/buildTransferPayload.ts)
 - ### Transfer Alien Token : [burn payload](../EVER-TO-EVM/scripts/helpers/buildBurnPayload.ts)
 - ### Payload for saveWithdrawAlien and saveWithdrawNative :
-  mentioned function's have two inputs (payload, signatures)
+  Mentioned function's have two inputs (payload, signatures)
   - [payload](../EVER-TO-EVM/scripts/helpers/buildSaveWithdrawPayload.ts)
   - [signatures](../EVER-TO-EVM/scripts/helpers/getSignatures.ts)

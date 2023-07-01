@@ -46,7 +46,7 @@ This table contains the EVERSCALE Smart Contracts mentioned in the EVER-to-EVM.m
 | network | ---           | ---                                                                | ---                                                                |
 | global  | ---           | 0:a8698f1a9bd48201b1eafcb6975b90b60867063ffff3cc7114a480f924999b75 | 0:6b7e3255de478ff6b5d441235e6ea6c43764f897dd761d56c2fdf7199d80cf86 |
 
-> opposite of the ethereumEverscaleEventConfigurations, the EverscaleEthereumEventConfigurations are having just two addresses on EVERSCALE which supports all evm networks.
+> Opposite of the ethereumEverscaleEventConfigurations, the EverscaleEthereumEventConfigurations are having just two addresses on EVERSCALE which supports all evm networks.
 
 ## TokensAddress
 

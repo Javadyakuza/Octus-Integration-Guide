@@ -17,11 +17,11 @@
 
 # EVM to EVER Transfer Integration Step-by-Step
 
-1. Deposit the target token to `MultiVault`, which has two ways:
+1. Deposit the desired amount of target token to `MultiVault` contract, which has two ways:
 
    ## Function
 
-- 1.1: If our token was an ERC-20 token we must use the `deposit` function on `MultiVault` contract,
+- 1.1: If target token was an ERC-20 token we must use the `deposit` function on `MultiVault` contract,
   but before that we must approve [MultiVault](./addresses.md#evm-smart-contracts) for desired token amount if token is not non-multiVault token, once approved deposit function can be called.
 
   ```solidity
@@ -48,7 +48,7 @@
   | expected_evers | see [expected_evers](./concepts.md#event-contract-deploy-value-expected_evers) |
   | payload        | operational payload, see [payloads](./concepts.md#payloads)                    |
 
-- 1.2: If our token was the EVM network native coin, we must use `depositByNativeToken` on `MultiVault` contract and attach the desired amount of the native coin equal to it's amount parameter to tx:
+- 1.2: If target token was the EVM network native coin, we must use `depositByNativeToken` on `MultiVault` contract and attach the desired amount of the native coin equal to it's amount parameter to tx:
 
   > NOTE : In `MultiVault` the native coin will be converted to its wrapped version and then rest of the operation will be resumed.
 
