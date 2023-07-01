@@ -4,17 +4,17 @@
 
 ### Alien Tokens
 
-Tokens that are not originally from EVERSCALE are known as "alien" tokens. Examples include [WETH](./addresses.md#weth), [WBTC](./addresses.md#wbtc), [USDT](./addresses.md#usdt) and etc.
+Tokens that are not originally from EVERSCALE are known as alien tokens. Examples include [WETH](./addresses.md#weth), [WBTC](./addresses.md#wbtc), [USDT](./addresses.md#usdt) and others.
 
 ### Native Tokens
 
-Tokens that are originally from EVERSCALE are known as "native" tokens. Examples include [WEVER](./addresses.md#wever). [BRIDGE](./addresses.md#bridge) and [QUBE](./addresses.md#qube).
+Tokens that are originally from EVERSCALE are known as native tokens. Examples include [WEVER](./addresses.md#wever). [BRIDGE](./addresses.md#bridge) and [QUBE](./addresses.md#qube).
 
 ## EVM TOKEN TYPES
 
 ### Alien Tokens
 
-Tokens that are ERC-20 and non-native EVERSCALE token and non-native coin in target evm network(ETH, BNB, FTM and etc), are known as alien tokens, Examples include **USDT**, **USDC**, **WBTC** and etc.
+Tokens that are ERC-20 and non-native EVERSCALE token and non-native coin in target evm network(ETH, BNB, FTM and etc), are known as alien tokens. Examples include **USDT**, **USDC**, **WBTC** and etc.
 
 ### Native Tokens
 
@@ -32,25 +32,29 @@ Tokens that are EVERSCALE native token or coin. Examples include **WEVER**, **BR
 
 at the EVER -> EVM direction the operation's on the EVM network are as follows :
 
-- minting if evm MultiVault token and releasing if alien or native token, native token will be released as its wrapped version.
+- Minting: If the token is an EVM MultiVault token.
+
+- Releasing: If the token is an alien or native token. For native tokens, they will be released as their wrapped versions.
 
 ### Approving Alien ERC-20 Tokens
 
-If the target token being transferred from EVM to EVERSCALE is **non-EVERSCALE native** (MultiVault Token) and **ERC-20 token**, it's necessary to approve the "MultiVault" contract at the first in order to transfer the amount of target token to itself. If the transferable token is the EVM network's native coin, we must attach the desired amount of native coin to tx and call the `depositByNativeCoin`.
+If the token being transferred from EVM to EVERSCALE is a non-EVERSCALE native MultiVault token and an ERC-20 token, it is necessary to approve the "MultiVault" contract first in order to transfer the amount of the token to itself. If the transferable token is the EVM network's native coin, the desired amount of the native coin should be attached to the transaction and the depositByNativeCoin function should be called.
 
 ### Event Contract Deploy Value (expected_evers)
 
-Amount of ever which we expect to see after event deployment and confirmation.
+The expected amount of EVER that is expected to be seen after event deployment and confirmation.
 
-Note that in EVM -> EVER direction, if we want to pay the EVERSCALE operations in sender evm network native coin, we have to determine that by setting this parameter to a certain amount and vice versa. see [how to set expected_evers ?](./FAQ.md##how-to-set-expected_evers)
+Note that in the EVM to EVER direction, if you want to pay the EVERSCALE operations in the sender's EVM network native coin, you need to set this parameter to a certain amount. \
+User must set it to zero if paying the fees with EVER. \
+ For more information on setting expected_evers, see [how to set expected_evers](./FAQ.md##how-to-set-expected_evers)
 
 ## EVERSCALE OPERATIONS
 
-at the EVM -> EVER direction the operation's on the EVERSCALE as follows :
+n the EVM to EVER direction, the following operations are performed on EVERSCALE:
 
-- deploying the event contract referring to token deposit on evm network.
-
-- releasing token if ever native token and minting if evm alien token.
+- Deploying the event contract referring to token deposits on the EVM network.
+- Releasing tokens if they are EVERSCALE native tokens.
+- Minting tokens if they are EVM alien tokens.
 
 ## Operational Differences Between Alien Tokens and Native Tokens in EVERSCALE
 
@@ -65,15 +69,16 @@ at the EVM -> EVER direction the operation's on the EVERSCALE as follows :
 
 ### Manual Asset releasing
 
-- In EVER -> EVM direction, if paying the evm network operations in its native coin, we have to manually release or mint target assets. calling `saveWithdrawNative` if transferring an EVERSCALE native token/coin and calling `saveWithdrawAlien` if transferring a EVERSCALE alien token will perform such a operation.
+- In the EVER to EVM direction, if the payment for the EVM network operations is in its native coin, the target assets need to be manually released or minted. Calling saveWithdrawNative will perform this operation for EVERSCALE native tokens/coins(MultiVault tokens), while calling saveWithdrawAlien will perform it for EVERSCALE alien tokens.
 
-- In EVM -> EVER direction, if paying the EVERSCALE operations with EVER, we have to manually release assets on EVERSCALE by [deploying event contracts](../EVER-TO-EVM/scripts/deployEvents/).
+- In the EVM to EVER direction, if the payment for EVERSCALE operations is in EVER, the assets on EVERSCALE need to be manually released or minted by deploying event contract. \
+  see [Event contract deployment](../EVER-TO-EVM/scripts/deployEvents/).
 
 ### Automatic Asset releasing
 
 - In EVER -> EVM direction assets will be released or minted on evm side by attaching enough EVER and proper [payload](#payloads) to tx.
 
-- In EVM -> EVER direction assets will be released or minted on EVERSCALE by attaching enough evm native coin to tx and setting the expected_ever to event contract initial balance. how to set [expected_evers](./FAQ.md#how-to-set-expected_evers)
+- In EVM -> EVER direction assets will be released or minted on EVERSCALE by attaching enough evm native coin to tx and setting the expected_ever to event contract initial balance. see [how to set expected_evers](./FAQ.md#how-to-set-expected_evers)
 
 ### Directions
 
