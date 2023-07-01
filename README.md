@@ -8,7 +8,7 @@ OctusBridge acts as a bridge between EVM-compatible networks and the everscale n
 
 The architecture of Octus Bridge not only enables the relay of token transfer events but also allows for the bridging of various forms of data between source and destination chains.
 
-# Contribution
+# Custom Data Bridging
 
 To implement custom cross-chain data bridging, it is necessary to develop, propose, and obtain acceptance through a vote by the Octus Bridge DAO for the Configuration and Event contracts.
 
