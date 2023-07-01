@@ -44,10 +44,6 @@ Amount of ever which we expect to see after event deployment and confirmation.
 
 Note that in EVM -> EVER direction, if we want to pay the everscale operations in sender evm network native coin, we have to detemine that by setting this parameter to a certain amount and viceversa. see [how to set expected_evers ?](./FAQ.md##how-to-set-expected_evers)
 
-### Asset releasing
-
-in EVER -> EVM direction, in case of paying the evm network operations in its native coin, we have to manually release or mint assets. to perform that we have to call `saveWithdrawNative` if transfering an everscale native token/coin and call `saveWithdrawAlien` if transfering a everscale alien token.
-
 ## EVERSCALE OPERATIONS
 
 at the EVM -> EVER direction the operation's on the everscale as follows :
@@ -66,6 +62,18 @@ at the EVM -> EVER direction the operation's on the everscale as follows :
   When transfering the evm native coin, it will be wrapped into a ERC-20 (WETH, WBNB and etc), then will be locked on evm network and minted on everscale network.
   when transfering an evm alien and non-multivault token it will be locked on evm and minted on everscale network.
   When transfering an evm MultiVault Token (WEVER, BRIDGE and QUBE), it will be burnt on evm network and released on everscale network.
+
+### Manual Asset releasing
+
+- In EVER -> EVM direction, if paying the evm network operations in its native coin, we have to manually release or mint target assets. calling `saveWithdrawNative` if transfering an everscale native token/coin and calling `saveWithdrawAlien` if transfering a everscale alien token will perform such a operation.
+
+- In EVM -> EVER direction, if paying the everscal operations with EVER, we have to manually release assets on everscale by [deploying event contracts](../EVER-TO-EVM/scripts/deployEvents/).
+
+### Automatic Asset releasing
+
+- In EVER -> EVM direction assets will be released or minted on evm side by attaching enough EVER and propoer [payload](#payloads) to tx.
+
+- In EVM -> EVER direction assets will be released or minted on everscale by attaching enough evm native coin to tx and setting the expected_ever to event contract initial balance. how to set [expected_evers](./FAQ.md#how-to-set-expected_evers)
 
 ---
 
