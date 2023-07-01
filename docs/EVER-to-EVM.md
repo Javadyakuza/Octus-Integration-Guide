@@ -195,3 +195,7 @@
 | ---------- | --------------------------------------------------------------------------------------------------------- |
 | payload    | operational payload, see [payload](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative).   |
 | signatures | relayers signatures see [signatures](./concepts.md#payload-for-savewithdrawalien-and-savewithdrawnative). |
+
+---
+
+> # All of the scripts related to examples above can be found [here](../EVER-TO-EVM/scripts/)
