@@ -1,14 +1,14 @@
 # EVER to EVM tranfer mechanics overview
 
-1 - First we have to lock our token in everscale if ever native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
+1 - First thing is locking target token in everscale if everscale native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
 
 2 - through previous transaction the event contract is deployed on everscale and after few second the relayers will confirm it by voting to the event contract.
 
-3.1 : if we desire to pay the [operations](./concepts.md#evm-operations) gas fees in target evm network with ever, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm native token or release it if evm alien token, so all we can do at this point is to wait.
+3.1 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with ever, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm native token or release it if evm alien token, so all we can do at this point is to wait.
 
-3.2 : if we desire to pay the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm native token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVaultFacetWithdraw` contract.
+3.2 : if paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm native token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVaultFacetWithdraw` contract.
 
-4 - at this point we have to see the desired amount of target token is deposited to recepient address.
+4 - at this point the desired amount of target token most be deposited to recepient EVM address.
 
 # EVER to EVM transfer integration step by step
 
