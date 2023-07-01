@@ -1,6 +1,6 @@
 # EVER to EVM tranfer mechanics overview
 
-1 - First thing is locking target token in everscale if everscale native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
+1 - locking target token in everscale if everscale native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
 
 2 - through previous transaction the event contract is deployed on everscale and after few second the relayers will confirm it by voting to the event contract.
 
@@ -10,11 +10,15 @@
 
 4 - at this point the desired amount of target token most be deposited to recepient EVM address.
 
+> #### NOTICE : all fo the refrenced contracts addresses can be found at [addresses.md](./addresses.md).
+
 # EVER to EVM transfer integration step by step
 
 ### Transfering EVER
 
 - 1 - we call the `wrap` method on the [`Vault`](./addresses.md#everscale-smart-contracts) contract and lock our newly minted WEVER in eversale:
+
+### Function
 
 ```solidity
     function wrap(
@@ -40,6 +44,8 @@
 
 - 2 - releasing `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
+### Function
+
 ```solidity
     function saveWithdrawNative(
         bytes memory payload,
@@ -61,6 +67,8 @@
 > ## `BRIDGE` is used in this example.
 
 1 - we have to lock the the target token to `ProxyMultiVaultNative`'s `TokenWallet` contract by calling the `transfer` function on our `TokenWallet` contract :
+
+### Function
 
 ```solidity
     function transfer(
@@ -90,6 +98,8 @@
 
 - 2 - releasing `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
 
+### Function
+
 ```solidity
     function saveWithdrawNative(
         bytes memory payload,
@@ -111,6 +121,8 @@
 > ## `USDT` is used in this example.
 
 1 - first we have to burn the token on everscale network by calling the `burn` function on our `tokenWallet` contract :
+
+### Function
 
 ```solidity
     function burn(
@@ -136,6 +148,8 @@
 
 - 2 - releasing `USDT` in the evm network by calling the `saveWithdrawAlien` :
 
+### Function
+
 ```solidity
     function saveWithdrawAlien(
         bytes memory payload,
@@ -157,6 +171,8 @@
 > ## `WBNB` is used in this example.
 
 1 - first we have to burn the token on everscale network by calling the `burn` function on our `tokenWallet` contract :
+
+### Function
 
 ```solidity
     function burn(
@@ -181,6 +197,8 @@
 ### NOTE : continue if paying the evm network operations with its native coin !!
 
 - 2 - minting `BNB` in the evm network by calling the `saveWithdrawAlien` :
+
+### Function
 
 ```solidity
     function saveWithdrawAlien(
