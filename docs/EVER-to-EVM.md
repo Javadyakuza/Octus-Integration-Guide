@@ -43,7 +43,7 @@ Note that the native token will be released as its wrapped version.
 
 ### NOTE : Continue if paying the evm network operations with its native coin !!
 
-- 2 - Minting `WEVER` in the evm network by calling the `saveWithdrawNative` :
+- 2 - Mint `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
 ### Function
 
