@@ -1,20 +1,20 @@
-# ever to evm tranfer mechanics overview
+# EVER to EVM tranfer mechanics overview
 
-1 - first we have to lock our token in everscale if ever native token and burning it if ever alien token. see also {[alien and native tokens](./concepts.md#alien-tokens)}
+1 - First we have to lock our token in everscale if ever native token and burning it if ever alien token. see [everscale token types](./concepts.md#everscale-token-types).
 
-2 - through previous transaction the event contract is deployed on everscale and within a second the relayers will confirm it by voting to the event contract.
+2 - through previous transaction the event contract is deployed on everscale and after few second the relayers will confirm it by voting to the event contract.
 
-3.1 : if we have chosen to pay the [operations](./concepts.md#evm-network-operations) gas fees in target evm network with ever, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm native token or release it if evm alien token, so all we can do at this point is to wait.
+3.1 : if we desire to pay the [operations](./concepts.md#evm-operations) gas fees in target evm network with ever, the [credit backend](./concepts.md#credit-backend) will equalizes balances on both sides and mints token if evm native token or release it if evm alien token, so all we can do at this point is to wait.
 
-3.2 : if have chosen to pay the [operations](./concepts.md#evm-network-operations) gas fees in target evm network with its native coin, its time to mint the token if evm native token by calliing either `saveWithdrawNative` or release it `saveWithdrawAlien` functions on `MultiVaultFacetWithdraw` contract.
+3.2 : if we desire to pay the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin, its time to mint tokens if evm native token by calling `saveWithdrawNative` or release it by calling `saveWithdrawAlien` on `MultiVaultFacetWithdraw` contract.
 
 4 - at this point we have to see the desired amount of target token is deposited to recepient address.
 
-# evm to ever transfer integration step by step
+# EVER to EVM transfer integration step by step
 
 ### Transfering EVER
 
-- 1 - we call the `wrap` method on the `Vault` contract and lock our newly minted WEVER in eversale:
+- 1 - we call the `wrap` method on the [`Vault`](./addresses.md#this-table-contains-foregoing-smart-contracts-in-ever-to-evmmd-and-evm-to-evermd-files) contract and lock our newly minted WEVER in eversale:
 
 ```solidity
     function wrap(
@@ -27,18 +27,18 @@
 
 ### Parameters
 
-| param            | descritption                                                 |
-| ---------------- | ------------------------------------------------------------ |
-| tokens           | amount of the target transferable token                      |
-| owner_addres     | Token wallet owner address                                   |
-| gas_back_address | addresse to send the change back                             |
-| payload          | operational payload, see [concepts](./concepts.md#Payloads). |
+| param            | descritption                                                                        |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| tokens           | amount of the target transferable token                                             |
+| owner_addres     | Token wallet owner address                                                          |
+| gas_back_address | addresse to send the change back                                                    |
+| payload          | operational payload, see [wrap payload](./concepts.md#transfer-ever--wrap-payload). |
 
-> NOTE : gas_back_address will be the our address if we were paying the [operations](./concepts.md#evm-network-operations) gas fees in target evm network with ever.
+> NOTE : gas_back_address will be our address if we were paying the [operations](./concepts.md#evm-operations) gas fees in target evm network with its native coin.
 
-### > NOTE : if we were paying the [operations](./concepts.md#evm-network-operations) gas fees in target evm network with ever the next step is not needed, this is determined in payload.
+### NOTE : continue if paying the evm network operations with its native coin !!
 
-- 2 - releasing `WEVER` in the evm network by calling the `saveWithdrawAlien` :
+- 2 - releasing `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
 ```solidity
     function saveWithdrawAlien(
