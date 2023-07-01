@@ -1,10 +1,9 @@
-## how to set expected_evers ?
+## How to Set `expected_evers`?
 
-Expected evers are set and used when the user wants to transfer a token from and EVM network to Everscale.\
-if user set's this parameter to a Event initial balance and attaches enough evm native coin to tx, the event will be deployed by the credit backend's automatically and user doesnt have to do any thing but waiting.
+Expected evers play a crucial role when transferring a token from an EVM network to Everscale. The user can configure this parameter to determine the behavior of the transaction.
 
-On other hand if user sets the expected evers to a value less than event initial balance or zero, or attaches not enough evm native coin to the tx, the event will not be deployed and requires manual deploying.
+If the user sets `expected_evers` to match the event's initial balance and attaches sufficient EVM native coins to the transaction, the event will be automatically deployed by the credit backend. In such cases, the user simply needs to wait for the deployment process to complete.
 
-Credit backends have wallets at all networks and equalize balances. Therefore, if payment is made with an attached EVM native coin of the required size (`eventInitialBalance`) for the transaction, the credit backend will deploy the event contract.
+On the other hand, if the user sets `expected_evers` to a value lower than the event's initial balance or zero, or fails to attach enough EVM native coins to the transaction, the event will not be deployed automatically. Instead, it will require manual deployment.
 
-This parameter is needed when we are using `deposit` funnction on Multivault Contract.
+Credit backends possess wallets across all networks and ensure balance equality. Consequently, if payment is made with the appropriate amount of attached EVM native coins (matching the `eventInitialBalance`), the credit backend will proceed with deploying the event contract.
