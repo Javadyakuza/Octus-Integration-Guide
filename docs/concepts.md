@@ -44,6 +44,10 @@ Amount of ever which we expect to see after event deployment and confirmation.
 
 Note that in EVM -> EVER direction, if we want to pay the everscale operations in sender evm network native coin, we have to detemine that by setting this parameter to a certain amount and viceversa. see [how to set expected_evers ?](./FAQ.md##how-to-set-expected_evers)
 
+### Asset releasing
+
+in EVER -> EVM direction, in case of paying the evm network operations in its native coin, we have to manually release or mint assets. to perform that we have to call `saveWithdrawNative` if transfering an everscale native token/coin and call `saveWithdrawAlien` if transfering a everscale alien token.
+
 ## EVERSCALE OPERATIONS
 
 at the EVM -> EVER direction the operation's on the everscale as follows :

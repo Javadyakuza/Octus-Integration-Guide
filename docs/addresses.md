@@ -1,6 +1,8 @@
 ## ContractAddresses
 
-> ### this table contains foregoing EVM smart contracts in EVER-to-EVM.md and EVM-to-EVER.md files.
+### EVM smart contracts
+
+this table contains foregoing EVM smart contracts in EVER-to-EVM.md and EVM-to-EVER.md files.
 
 | ---       | contract name | MultiVault                                 |
 | --------- | ------------- | ------------------------------------------ |
@@ -13,18 +15,21 @@
 | Solana    | ---           | 0x0                                        |
 | Avalanche | ---           | 0x0                                        |
 
-> ### this table contains foregoing EVERSCALE smart contracts in EVER-to-EVM.md and EVM-to-EVER.md files.
+### EVERSCALE Smart Contracts
 
-| contract name | ever address                                                       |
-| ------------- | ------------------------------------------------------------------ |
-| vault         | 0:557957cba74ab1dc544b4081be81f1208ad73997d74ab3b72d95864a41b779a4 |
-| Compounder    | 0:8707c99c2e4a98642ba29a9d389656e804bd5b3cbe11a426ca12335792168d8a |
-| Ethereum      | ---                                                                |
-| Bsc           | ---                                                                |
-| Polygon       | ---                                                                |
-| Ftm           | ---                                                                |
-| Solana        | ---                                                                |
-| Avalanche     | ---                                                                |
+> this table contains foregoing EVERSCALE Smart Contracts in EVER-to-EVM.md and EVM-to-EVER.md files.
+
+| contract name    | ever address                                                       |
+| ---------------- | ------------------------------------------------------------------ |
+| vault            | 0:557957cba74ab1dc544b4081be81f1208ad73997d74ab3b72d95864a41b779a4 |
+| Compounder       | 0:8707c99c2e4a98642ba29a9d389656e804bd5b3cbe11a426ca12335792168d8a |
+| ProxyMVnativeV_4 | 0:36122a25a11e8772dc5d94f5f6a653d4661f6e474bc85cb275aece185acd62a4 |
+| ProxyMVAlienV_7  | 0:85c3287c6114e420ae82ec1364da3c760a5789f383213ef3cedef5d8c3d126fd |
+| EventCloser      | 0:6c5803db0fb7403421494ec458e5bc4763fb49cbb1b246ff2d3310e860845a78 |
+| MergePoolV_4     | 0:ec31a2d0740402900a065d2fdd027ef31f0f3748a9862d113902acecc6acae18 |
+| Ftm              | ---                                                                |
+| Solana           | ---                                                                |
+| Avalanche        | ---                                                                |
 
 > ### this table contains EthereumEverscaleEventConfiguration contract addresses for everscale native/alien token transfering events and each network.
 
