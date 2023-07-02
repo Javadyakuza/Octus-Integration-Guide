@@ -49,7 +49,7 @@ async function TransferEvmAlienEverNativeToken(): Promise<ContractTransactionRes
     console.log("tx hash ; ", res?.hash);
     return res;
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
     return null;
   }
 }

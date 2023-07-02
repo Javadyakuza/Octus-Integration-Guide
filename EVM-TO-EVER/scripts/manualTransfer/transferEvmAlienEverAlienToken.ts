@@ -45,7 +45,7 @@ async function TransferEvmAlienEverAlienToken(): Promise<ContractTransactionResp
         value: deposit_value,
       },
     );
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
     return res;
   } catch (error) {
     return null;

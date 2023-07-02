@@ -9,14 +9,3 @@ export type MultiTokenAlienWithdrawalData = {
     strict: boolean;
   };
 };
-export type EverscaleEvent = {
-  eventTransactionLt: number;
-  eventTimestamp: number;
-  eventData: string;
-  configurationWid: number;
-  configurationAddress: number;
-  eventContractWid: number;
-  eventContractAddress: number;
-  proxy: string;
-  round: number;
-};

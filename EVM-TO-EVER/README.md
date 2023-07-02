@@ -1,13 +1,18 @@
-# Sample Hardhat Project
+# EVM to EVER direction code samples
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+The current folder contains a comprehensive collection of code samples and scripts that cover and handle all the cases mentioned in the Evm to EVER [documentation](../docs/EVM-to-EVER.md).
 
-Try running some of the following tasks:
+# Table of Contents
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+- Auto transfers
+  - [EVM Alien Token](./scripts/autoTransfer/transferEvmAlienToken.ts)
+  - [EVM Native Token](./scripts/autoTransfer/transferEvmNativeToken.ts)
+- Manual Transfer
+  - [EVM and EVER Alien Token](./scripts/manualTransfer/transferEvmAlienEverAlienToken.ts)
+  - [EVM Alien EVER Native Token](./scripts/manualTransfer/transferEvmAlienEverNativeToken.ts)
+  - [EVM Native EVER Alien Token](./scripts/manualTransfer/transferEvmNativeEverAlienToken.ts)
+  - [Alien Token Withdrawal](./scripts/saveWithdraw/saveWithdrawAlien.ts)
+  - [Native Token Withdrawal](./scripts/saveWithdraw/saveWithdrawNative.ts)
+- successful Transaction Hashes :
+  - [Auto Transfer](./scripts/autoTransfer/TRANSACTIONS.md)
+  - [Manual Transfer](./scripts/manualTransfer/TRANSACTIONS.md)
