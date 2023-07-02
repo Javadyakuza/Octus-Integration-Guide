@@ -1,17 +1,19 @@
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 import { ethers } from "hardhat";
 import { deployedContracts } from "../../constants";
-import { LogDescription, ContractTransactionResponse, TransactionReceipt, Log } from "ethers/src.ts/ethers";
+import { ContractTransactionResponse } from "ethers/src.ts/ethers";
+
+require("dotenv").config();
+
 /**
- * this module performs transfering an evm native, ever alien token from an evm network to everscale network using TransferEVMeverNativeToken function
- * BNB is used as token and sender evm network is BSC at this praticular example.
+ * this module performs transferring an evm native, ever alien token from an evm network to everscale network using TransferEVMEverNativeToken function
+ * BNB is used as token and sender evm network is BSC at this particular example.
  * @notice event deploying on everscale is done automatically by setting the certain value for expected_evers param
  * @returns ContractTransactionResponse returned data about the tx
 
  */
-require("dotenv").config();
 
-async function TransferEVMeverNativeToken(): Promise<ContractTransactionResponse | null> {
+async function TransferEVMEverNativeToken(): Promise<ContractTransactionResponse | null> {
   // setting the signer
   const evmSigner: HardhatEthersSigner = await ethers.provider.getSigner(0);
   console.log("user wallet address : ", evmSigner.address);
@@ -43,13 +45,13 @@ async function TransferEVMeverNativeToken(): Promise<ContractTransactionResponse
     console.log("tx hash ; ", res?.hash);
     return res;
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
     return null;
   }
 }
-TransferEVMeverNativeToken()
+TransferEVMEverNativeToken()
   .then(res => {
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
   })
   .catch(error => {
     console.error(error);

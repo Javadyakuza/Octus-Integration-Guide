@@ -10,6 +10,7 @@ import {
   SampleSignaturesEverNativeEvmAlienToken,
 } from "./values";
 import * as web3 from "web3";
+
 require("dotenv").config();
 
 export async function saveWithdrawNative(): Promise<ContractTransactionResponse | null> {
@@ -61,7 +62,7 @@ export async function saveWithdrawNative(): Promise<ContractTransactionResponse 
 }
 saveWithdrawNative()
   .then(res => {
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
   })
   .catch(error => {
     console.error(error);

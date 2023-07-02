@@ -1,15 +1,13 @@
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
-import { deployContract } from "@nomicfoundation/hardhat-ethers/types";
-import { LogDescription, ContractTransactionResponse, TransactionReceipt, Log } from "ethers/src.ts/ethers";
-
+import { ContractTransactionResponse } from "ethers/src.ts/ethers";
 import { ethers } from "hardhat";
 import { deployedContracts } from "../../constants";
 
 require("dotenv").config();
 /**
- * this module performs transfering an evm native, ever alien token from an evm network to everscale network using TransferEvmNativeEverAlienToken funtcion.
- * BNB is used as token and sender evm network is BSC at this praticular example.
- * @notice event deploying on everscale side is done manually see{../README.md}, because expected_evers is setted to zero
+ * this module performs transferring an evm native, ever alien token from an evm network to everscale network using TransferEvmNativeEverAlienToken function.
+ * BNB is used as token and sender evm network is BSC at this particular's example.
+ * @notice event deploying on everscale side is done manually see{../README.md}, because expected_evers is set to zero
  * @returns ContractTransactionResponse returned data about the tx
  */
 async function TransferEvmNativeEverAlienToken(): Promise<ContractTransactionResponse | null> {
@@ -21,7 +19,7 @@ async function TransferEvmNativeEverAlienToken(): Promise<ContractTransactionRes
   // attaching them to on-chain addresses
   MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
-  // deposititng
+  // depositing
   const MultiVaultNativeDeposit =
     MultiVault.connect(evmSigner)["depositByNativeToken(((int8,uint256),uint256,uint256,bytes))"];
 
@@ -49,7 +47,7 @@ async function TransferEvmNativeEverAlienToken(): Promise<ContractTransactionRes
 }
 TransferEvmNativeEverAlienToken()
   .then(res => {
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
   })
   .catch(error => {
     console.error(error);

@@ -4,12 +4,13 @@ import { ContractTransactionResponse } from "ethers/src.ts/ethers";
 import * as Contracts from "../../typechain-types/index";
 import { deployedContracts } from "../../constants";
 import {
-  SamplePayloadEverAlienEvmAlien,
-  SampleSignaturesEverAlienEvmAlien,
-  SamplePayloadEverAlienEvmNative,
-  SampleSignaturesEverAlienEvmNative,
+  SamplePayloadEverAlienEvmAlienToken,
+  SampleSignaturesEverAlienEvmAlienToken,
+  SamplePayloadEverAlienEvmNativeToken,
+  SampleSignaturesEverAlienEvmNativeToken,
 } from "./values";
 import * as web3 from "web3";
+
 require("dotenv").config();
 
 export async function saveWithdrawAlien(): Promise<ContractTransactionResponse | null> {
@@ -21,10 +22,10 @@ export async function saveWithdrawAlien(): Promise<ContractTransactionResponse |
   // attaching them to on-chain addresses
   MultiVault = await MultiVault.attach(deployedContracts.BSCMultiVault);
 
-  const signatures = SampleSignaturesEverAlienEvmNative.map(sign => {
+  const signatures = SampleSignaturesEverAlienEvmNativeToken.map(sign => {
     const signature = `0x${Buffer.from(sign, "base64").toString("hex")}`;
     const address = web3.eth.accounts.recover(
-      web3.utils.sha3(SamplePayloadEverAlienEvmNative as string) as string,
+      web3.utils.sha3(SamplePayloadEverAlienEvmNativeToken as string) as string,
       signature,
     );
     return {
@@ -49,19 +50,19 @@ export async function saveWithdrawAlien(): Promise<ContractTransactionResponse |
   MultiVault = await MultiVault.connect(evmSigner);
   try {
     const res = await MultiVault.saveWithdrawAlien(
-      SamplePayloadEverAlienEvmNative,
+      SamplePayloadEverAlienEvmNativeToken,
       signatures.map(({ signature }) => signature),
     );
     console.log("tx hash ; ", res?.hash);
     return res;
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
     return null;
   }
 }
 saveWithdrawAlien()
   .then(res => {
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
   })
   .catch(error => {
     console.error(error);

@@ -1,11 +1,12 @@
 import { ethers } from "hardhat";
-import { LogDescription, ContractTransactionResponse, TransactionReceipt, Log } from "ethers/src.ts/ethers";
+import { ContractTransactionResponse } from "ethers/src.ts/ethers";
 import { deployedContracts } from "../../constants";
+
 require("dotenv").config();
 /**
- * this module performs transfering an evm alien, ever alien token from an evm network to everscale network using TransferEvmAlienEverAlienToken funtcion.
- * USDT is used as token and sender evm network is BSC at this praticular example.
- * @notice event deploying on everscale side is done manually see{../README.md}, because expected_evers is setted to zero
+ * this module performs transferring an evm alien, ever alien token from an evm network to everscale network using TransferEvmAlienEverAlienToken function.
+ * USDT is used as token and sender evm network is BSC at this particular example.
+ * @notice event deploying on everscale side is done manually see{../README.md}, because expected_evers is set to zero
  * @returns ContractTransactionResponse returned data about the tx
  */
 async function TransferEvmAlienEverAlienToken(): Promise<ContractTransactionResponse | null> {
@@ -25,7 +26,7 @@ async function TransferEvmAlienEverAlienToken(): Promise<ContractTransactionResp
     "this is the multiVault allowance : ",
     await AlienToken.allowance(evmSigner.address, await MultiVault.getAddress()),
   );
-  // deposititng
+  // depositing
   const MultiVaultDeposit = MultiVault.connect(evmSigner)["deposit(((int8,uint256),address,uint256,uint256,bytes))"];
 
   const amount = ethers.parseEther("0.01");
@@ -54,7 +55,7 @@ async function TransferEvmAlienEverAlienToken(): Promise<ContractTransactionResp
 
 TransferEvmAlienEverAlienToken()
   .then(res => {
-    console.log("succesfull , tx hash : ", res?.hash);
+    console.log("successful , tx hash : ", res?.hash);
   })
   .catch(error => {
     console.error(error);
