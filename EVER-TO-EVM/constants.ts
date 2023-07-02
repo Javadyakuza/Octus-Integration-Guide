@@ -6,10 +6,10 @@ export const EthereumEverscaleEventConfigurationA: Address = new Address(
 export const EthereumEverscaleEventConfigurationN: Address = new Address(
   "0:bd71db92ddb726930c0a23aade41d5d6134056efb791605189e8489d1d29e626",
 ); // evm ever native  event conf
-export const EverscaleEthereumEventConsigurationN = new Address(
+export const EverscaleEthereumEventConfigurationN = new Address(
   "0:a8698f1a9bd48201b1eafcb6975b90b60867063ffff3cc7114a480f924999b75",
 ); // ever evm native event conf
-export const EverscaleEthereumEventConsigurationA = new Address(
+export const EverscaleEthereumEventConfigurationA = new Address(
   "0:6b7e3255de478ff6b5d441235e6ea6c43764f897dd761d56c2fdf7199d80cf86",
 ); // ever evm native alien conf
 export const getAddrWidValue = new Address("0:1312c5e5d75e3442571032b5d41730f135686b21162154d49789af5aa50dc12d");
@@ -28,21 +28,21 @@ export const ProxyMultivaultAlienV_7 = new Address(
   "0:85c3287c6114e420ae82ec1364da3c760a5789f383213ef3cedef5d8c3d126fd",
 );
 export const MergePool_V4 = new Address("0:ec31a2d0740402900a065d2fdd027ef31f0f3748a9862d113902acecc6acae18");
-// mergge pool
+// merge pool
 export const EVERUSDT: Address = new Address("0:a519f99bb5d6d51ef958ed24d337ad75a1c770885dcd42d51d6663f9fcdacfb2");
 // ever USDT
 export const TargetTokenRootAlienEvmUSDT = new Address(
   "0:5f1ae3df506d1cec64cb2a30040a930f29e662a4527c1ddc0dfc2a86ba897dc4",
 );
-// MergPoolUSDTEvmBsc
+// MergePoolUSDTEvmBsc
 export const EVERWBNB: Address = new Address("0:9002c8a1cbbca3f9700b1b9438082342ede76d579e3a5a7c6f0e5d030ac5df43");
 // ever WBNB
 export const EVERBRIDGE: Address = new Address("0:f2679d80b682974e065e03bf42bbee285ce7c587eb153b41d761ebfd954c45e1");
 // ever BRIDGE
 export const EvmReceiver = "0xF1B7B971Da6715ecDF24F0c38352618a059309d7";
 // sample evm receiver
-export const Unwrapper = "0xa5cf4c57a7756943559B6B65f6cC67Aa834F79F5";
-// unwrapper for evm native token
+export const unWrapper = "0xa5cf4c57a7756943559B6B65f6cC67Aa834F79F5";
+// unWrapper for evm native token
 export const transfer_fees = {
   EverToEvmAutoRelease: locklift.utils.toNano("13"),
   EverToEvmManualRelease: locklift.utils.toNano("6"),

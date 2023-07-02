@@ -40,7 +40,7 @@ export async function buildNativeEventVoteData(txHash: string): Promise<any | nu
     };
     return eventVoteData;
   } catch (e) {
-    console.error(`Error fetching NativeTransfer event: ${e.message}`);
+    console.error(`Error fetching NativeTransfer event: ${e}`);
     throw e;
   }
 }
@@ -87,7 +87,7 @@ export async function buildAlienEventVoteData(txHash: string): Promise<any | nul
     };
     return eventVoteData;
   } catch (e) {
-    console.error(`Error fetching AlienTransfer event: ${e.message}`);
+    console.error(`Error fetching AlienTransfer event: ${e}`);
     throw e;
   }
 }

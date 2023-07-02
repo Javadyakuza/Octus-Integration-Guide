@@ -1,5 +1,5 @@
 import { getRandomUint } from "./randuint";
-import { EventCloser, ProxyMultiVaultNativeV_4 } from "../../constants";
+import * as constants from "../../constants";
 import { Address } from "locklift";
 /**
  * buildWrapPayload function prepares the payload to be used in Vault.wrap in order to transfer Ever from everscale to an evm network.
@@ -55,11 +55,11 @@ export async function buildWrapPayload(
     ] as const,
   });
 
-  const remainingGasTo = releaseByEver ? EventCloser : everSender;
+  const remainingGasTo = releaseByEver ? constants.EventCloser : everSender;
 
   const compounderPayload = await locklift.provider.packIntoCell({
     data: {
-      to: ProxyMultiVaultNativeV_4,
+      to: constants.ProxyMultiVaultNativeV_4,
       amount: locklift.utils.toNano(amount),
       remainingGasTo,
       payload: data.boc,

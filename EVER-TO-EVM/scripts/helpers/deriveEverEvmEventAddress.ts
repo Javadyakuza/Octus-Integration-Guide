@@ -1,6 +1,6 @@
 import { Address, Transaction, Contract } from "locklift";
 import { FactorySource } from "../../build/factorySource";
-import * as deployedContracts from "../../constants";
+import * as constants from "../../constants";
 
 export async function deriveEverEvmAlienEventAddress(
   txHash: string, // deployEvent tx hash (eventConfig.deployEvent)
@@ -21,7 +21,7 @@ export async function deriveEverEvmAlienEventAddress(
   const eventData = await locklift.provider.packIntoCell({
     data: {
       nonce: nonce,
-      proxy: deployedContracts.ProxyMultivaultAlienV_7,
+      proxy: constants.ProxyMultivaultAlienV_7,
       token: TargetTokenRootAlienEvm,
       remainingGasTo: ever_sender_address,
       amount: tokens,
@@ -48,7 +48,7 @@ export async function deriveEverEvmAlienEventAddress(
   const EverEvmAlienEventConf: Contract<FactorySource["EverscaleEthereumEventConfiguration"]> =
     locklift.factory.getDeployedContract(
       "EverscaleEthereumEventConfiguration",
-      deployedContracts.EverscaleEthereumEventConsigurationA,
+      constants.EverscaleEthereumEventConfigurationA,
     );
   const eventContractAddress: Address = (
     await EverEvmAlienEventConf.methods
@@ -84,7 +84,7 @@ export async function deriveEverEvmNativeEventAddress(
   const eventData = await locklift.provider.packIntoCell({
     data: {
       nonce: nonce,
-      proxy: deployedContracts.ProxyMultiVaultNativeV_4,
+      proxy: constants.ProxyMultiVaultNativeV_4,
       token: TargetTokenRootAlienEvm,
       remainingGasTo: ever_sender_address,
       amount: tokens,
@@ -111,7 +111,7 @@ export async function deriveEverEvmNativeEventAddress(
   const EverEvmAlienEventConf: Contract<FactorySource["EverscaleEthereumEventConfiguration"]> =
     locklift.factory.getDeployedContract(
       "EverscaleEthereumEventConfiguration",
-      deployedContracts.EverscaleEthereumEventConsigurationN,
+      constants.EverscaleEthereumEventConfigurationN,
     );
   const eventContractAddress: Address = (
     await EverEvmAlienEventConf.methods

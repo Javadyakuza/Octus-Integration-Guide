@@ -5,8 +5,8 @@ import { buildBurnPayloadForEvmAlienToken } from "../helpers/buildBurnPayload";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
 /**
- * this module performs transfering an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken funtcion.
- * USDT is used as token and receiver evm network is BSC at this praticular example.
+ * this module performs transferring an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken function.
+ * USDT is used as token and receiver evm network is BSC at this particular example.
  * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.{see ../../constants.ts:32}
  * @returns ContractTransactionResponse returned data about the tx
  */
@@ -46,10 +46,10 @@ async function transferEverAlienToken(): Promise<Transaction | unknown> {
       })
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmAutoRelease, bounce: true });
 
-    console.log("succesfull, tx hash : ", res.id.hash);
+    console.log("successful, tx hash : ", res.id.hash);
     return res;
   } catch (e) {
-    console.log("an error accures while wrapping : ", e);
+    console.log("an error accrued while wrapping : ", e);
     return e;
   }
 }

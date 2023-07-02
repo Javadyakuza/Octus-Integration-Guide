@@ -1,4 +1,4 @@
-import { Transaction, Address, Contract, EventsBatch } from "locklift";
+import { Address, Contract, EventsBatch } from "locklift";
 import * as constants from "../../constants";
 import { FactorySource } from "../../build/factorySource";
 export async function fetchAlienEventAddressFromOriginTxHash(txHash: string): Promise<Address | undefined> {
@@ -8,7 +8,7 @@ export async function fetchAlienEventAddressFromOriginTxHash(txHash: string): Pr
   const EverEvmAlienEventConfig: Contract<FactorySource["EverscaleEthereumEventConfiguration"]> =
     await locklift.factory.getDeployedContract(
       "EverscaleEthereumEventConfiguration",
-      constants.EverscaleEthereumEventConsigurationA,
+      constants.EverscaleEthereumEventConfigurationA,
     );
   // getting the pastEvents
   const pastEvents: EventsBatch<
@@ -34,7 +34,7 @@ export async function fetchNativeEventAddressFromOriginTxHash(txHash: string): P
   const EverEvmAlienEventConfig: Contract<FactorySource["EverscaleEthereumEventConfiguration"]> =
     await locklift.factory.getDeployedContract(
       "EverscaleEthereumEventConfiguration",
-      constants.EverscaleEthereumEventConsigurationN,
+      constants.EverscaleEthereumEventConfigurationN,
     );
   // getting the pastEvents
   const pastEvents: EventsBatch<

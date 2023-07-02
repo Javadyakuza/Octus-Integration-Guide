@@ -3,7 +3,6 @@ import { Address, Contract } from "locklift";
 import { ethers } from "hardhat";
 import * as web3 from "web3";
 import { FactorySource } from "../../build/factorySource";
-import { SrvRecord } from "dns";
 export async function buildSaveWithdraw(EverEvmAlienEventContractAddress: Address): Promise<string> {
   // fetching the contracts
   const EverEvmEventContract: Contract<FactorySource["EverscaleEthereumBaseEvent"]> =

@@ -8,12 +8,14 @@ import { FactorySource } from "../../build/factorySource";
 import { getSignatures } from "../helpers/getSignatures";
 // import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
 import { fetchAlienEventAddressFromOriginTxHash } from "../helpers/deriveEventAddressFromOriginHash";
+
 /**
- * this module performs transfering an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken funtcion.
- * USDT is used as token and receiver evm network is BSC at this praticular example.
+ * this module performs transferring an ever alien, evm alien token from everscale network to an evm network using transferEverAlienToken function.
+ * USDT is used as token and receiver evm network is BSC at this particular example.
  * @notice releasing assets on evm network is done manually by calling saveWithdrawAlien on MV contract at BSC.
  * @returns ContractTransactionResponse returned data about the tx
  */
+
 async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
   // setting ever wallet
   const signer: Signer = (await locklift.keystore.getSigner("0"))!;
@@ -24,11 +26,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
   console.log("ever wallet address : ", await everWallet.address.toString());
 
   // fetching the contracts
-  const EverEvmEventConfigContraact: Contract<FactorySource["EverscaleEthereumEventConfiguration"]> =
-    await locklift.factory.getDeployedContract(
-      "EverscaleEthereumEventConfiguration",
-      constants.EverscaleEthereumEventConsigurationA,
-    );
+
   const USDTTokenRoot: Contract<FactorySource["TokenRoot"]> = await locklift.factory.getDeployedContract(
     "TokenRoot",
     constants.EVERUSDT,
@@ -56,7 +54,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
       })
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmManualRelease, bounce: true });
 
-    console.log("succesfull, tx hash: ", res?.id.hash);
+    console.log("successful, tx hash: ", res?.id.hash);
     // getting the event contract address
     const eventAddress: Address | undefined = await fetchAlienEventAddressFromOriginTxHash(res?.id.hash)!;
     // getting the event contract address
@@ -64,7 +62,7 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
     //   deployEventTxHash,
     //   burnPayload[1],
     //   AlienTokenWalletUpgradable.address,
-    //   ethers.parseUnits(USDTTransferAmount.toString(), 18).toString(), // decimals is 18 because the final token at mergepool is an evmToken
+    //   ethers.parseUnits(USDTTransferAmount.toString(), 18).toString(), // decimals is 18 because the final token at mergePool is an evmToken
     //   constants.EvmReceiver,
     //   everWallet.address,
     //   constants.TargetTokenRootAlienEvmUSDT,
@@ -78,10 +76,10 @@ async function transferEverAlienToken(): Promise<[string, string[]] | unknown> {
     // fetching the signatures for `saveWithdrawAlien`
     let signatures: string[] = await getSignatures(eventContract);
     console.log([payload, , signatures]);
-    // after this step we have get payload and sigs and pass them to the saveWithdraawAlien
+    // after this step we have get payload and sigs and pass them to the saveWithdrawAlien
     return [payload, , signatures];
   } catch (e) {
-    console.log("an error accures while wrapping : ", e);
+    console.log("an error accrued while wrapping : ", e);
     return e;
   }
 }

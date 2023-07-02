@@ -62,16 +62,16 @@ export async function buildBurnPayloadForEvmAlienToken(
   return [data.boc, randNonce];
 }
 /**
- * buildBurnPayloadForEvmnativeToken function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
+ * buildBurnPayloadForEvmNativeToken function prepares the payload to be used in TokenWalletUpgradable.burn in order to transfer a token from everscale and to an evm network.
  * @param evmRecipient receiver EvmAddress
  * @returns burn payload string
  */
-export async function buildBurnPayloadForEvmnativeToken(evmRecipient: string): Promise<[string, string]> {
+export async function buildBurnPayloadForEvmNativeToken(evmRecipient: string): Promise<[string, string]> {
   const burnPayload = await locklift.provider.packIntoCell({
     data: {
-      addr: constants.Unwrapper,
+      addr: constants.unWrapper,
       callback: {
-        recipient: constants.Unwrapper,
+        recipient: constants.unWrapper,
         payload: Web3.eth.abi.encodeParameters(["address"], [evmRecipient]) ?? "",
         strict: false,
       },

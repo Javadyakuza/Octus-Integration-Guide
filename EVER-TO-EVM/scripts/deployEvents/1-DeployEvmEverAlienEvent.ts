@@ -7,9 +7,9 @@ import { FactorySource } from "../../build/factorySource";
 import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationA } from "../../constants";
 /**
- * @description at this module we will deploy MultiVaultEVMEverscaleEventAlienEvent contract in order to complete the deposit proccess on
+ * @description at this module we will deploy MultiVaultEVMEverscaleEventAlienEvent contract in order to complete the deposit process on
  * evm network in order to perform a transfer for an ever alien token from evm network to everscale.
- * USDT token is used in this particualr example
+ * USDT token is used in this particular example
  */
 async function deployAlienEvent(evmTxHash: string) {
   // setting ever wallet
@@ -59,7 +59,7 @@ async function deployAlienEvent(evmTxHash: string) {
       bounce: true,
     })
     .then(res => {
-      console.log("succesful, tx hash : ", res.id.hash);
+      console.log("successful, tx hash : ", res.id.hash);
     });
 }
 

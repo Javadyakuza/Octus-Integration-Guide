@@ -7,9 +7,9 @@ import { FactorySource } from "../../build/factorySource";
 import { EventVoteDataParam } from "../../types/index";
 import { EthereumEverscaleEventConfigurationN } from "../../constants";
 /**
- * @description at this module we will deploy MultiVaultEVMEverscaleEventNativeEvent contract in order to complete the deposit proccess on
+ * @description at this module we will deploy MultiVaultEVMEverscaleEventNativeEvent contract in order to complete the deposit process on
  * evm network in order to perform a transfer for an ever native token from evm network to everscale.
- * BRIDGE token is used in this particualr example
+ * BRIDGE token is used in this particular example
  */
 async function deployNativeEvent(evmTxHash: string) {
   // setting ever wallet
@@ -55,7 +55,7 @@ async function deployNativeEvent(evmTxHash: string) {
       bounce: true,
     })
     .then(res => {
-      console.log("succesful, tx hash : ", res.id.hash);
+      console.log("successful, tx hash : ", res.id.hash);
     });
 }
 

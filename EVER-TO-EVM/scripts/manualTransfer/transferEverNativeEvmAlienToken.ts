@@ -8,8 +8,8 @@ import { getSignatures } from "../helpers/getSignatures";
 // import { deriveEverEvmAlienEventAddress } from "../helpers/deriveEverEvmEventAddress";
 import { fetchNativeEventAddressFromOriginTxHash } from "../helpers/deriveEventAddressFromOriginHash";
 /**
- * this module performs transfering an ever native, evm alien token from everscale network to an evm network using transferEverNativeToken funtcion.
- * BRIDGE is used as token and receiver evm network is BSC at this praticular example.
+ * this module performs transferring an ever native, evm alien token from everscale network to an evm network using transferEverNativeToken function.
+ * BRIDGE is used as token and receiver evm network is BSC at this particular example.
  * @notice releasing assets on evm network is done automatically by attaching enough ever to tx.{see ../../constants.ts:32}
  * @returns ContractTransactionResponse returned data about the tx
  */
@@ -35,7 +35,7 @@ async function transferEverNativeToken(): Promise<[string, string[]] | unknown> 
   const BRIDGETransferAmount: number = 0.01;
   const transferPayload: [string, string] = await buildTransferPayload(constants.EvmReceiver, "56");
   console.log(transferPayload[0]);
-  // transfering
+  // transferring
   try {
     const res: Transaction = await AlienTokenWalletUpgradable.methods
       .transfer({
@@ -47,7 +47,7 @@ async function transferEverNativeToken(): Promise<[string, string[]] | unknown> 
         remainingGasTo: everWallet.address,
       })
       .send({ from: everWallet.address, amount: constants.transfer_fees.EverToEvmManualRelease, bounce: true });
-    console.log("succesfull, tx hash : ", res.id.hash);
+    console.log("successful, tx hash : ", res.id.hash);
     const eventAddress: Address | undefined = await fetchNativeEventAddressFromOriginTxHash(res?.id.hash);
     // getting the event contract address
     // const eventAddress: Address = await deriveEverEvmAlienEventAddress(
@@ -68,10 +68,10 @@ async function transferEverNativeToken(): Promise<[string, string[]] | unknown> 
     // fetching the signatures for `saveWithdrawAlien`, waiting 10 seconds for event to get confirmed by relayers
     let signatures: string[] = await getSignatures(eventContract);
     console.log([payload, , signatures]);
-    // after this step we have get payload and sigs and pass them to the saveWithdraawAlien
+    // after this step we have get payload and sigs and pass them to the saveWithdrawAlien
     return [payload, , signatures];
   } catch (e) {
-    console.log("an error accures while wrapping : ", e);
+    console.log("an error accrued while transferring : ", e);
     return e;
   }
 }
