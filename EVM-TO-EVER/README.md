@@ -1,6 +1,6 @@
 # EVM to EVER direction code samples
 
-The current folder contains a comprehensive collection of code samples and scripts that cover and handle all the cases mentioned in the Evm to EVER [documentation](../docs/EVM-to-EVER.md).
+The current folder contains a comprehensive collection of code samples and scripts that cover and handle all the cases mentioned in the EVM to EVER [documentation](../docs/EVM-to-EVER.md).
 
 # Table of Contents
 
