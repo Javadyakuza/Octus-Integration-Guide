@@ -1,10 +1,10 @@
 # OctusBridge Integration Guide
 
-This repository serves as a comprehensive guide for integrating with OctusBridge smart contracts.
+This repository serves as a comprehensive guide for integrating with Octus Bridge smart contracts.
 
 # Overview
 
-OctusBridge acts as a bridge between EVM-compatible networks and the everscale network, facilitating the seamless transfer of tokens and data across supported networks.
+Octus Bridge acts as a bridge between EVM-compatible networks and the everscale network, facilitating the seamless transfer of tokens and data across supported networks.
 
 The architecture of Octus Bridge not only enables the relay of token transfer events but also allows for the bridging of various forms of data between source and destination chains.
 
