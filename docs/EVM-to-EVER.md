@@ -1,4 +1,4 @@
-# EVM to Ever Transfer Mechanics Overview
+# EVM to EVER Transfer Mechanics Overview
 
 1. Deposit desired amount of the target token that is going to be transferred to the EVERSCALE in a contract named `MultiVault` which is in the origin EVM network.
 
@@ -80,7 +80,9 @@ struct DepositNativeTokenParams {
 | expected_evers | see [expected_evers](./Concepts/Operations.md#event-contract-deploy-value-expected_evers) |
 | payload        | operational payload, see [payloads](./Concepts/Payloads.md#payloads)                      |
 
-### NOTE : Continue if paying the EVERSCALE network operations with its native coin !!
+---
+
+#### :exclamation: Next step is only necessary if paying Everscale operations fees with EVER
 
 ## Deploy Events
 
@@ -121,4 +123,7 @@ The previous deposit functions emit `AlienTransfer` or `NativeTransfer` events. 
 | eventBlock       | eventBlock Hash       |
 
 3. After this step tokens must be deposited to recipient EverWallet.
-   > # All of the scripts related to examples above can be found [here](../EVM-TO-EVER/scripts/)
+
+---
+
+> All of the scripts related to examples above can be found [here](../EVM-TO-EVER/scripts/)

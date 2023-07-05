@@ -41,7 +41,11 @@ Note that the native token will be released as its wrapped version.
 
 > NOTE : gas_back_address will be our address if we were paying the [operations](./Concepts/Operations.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
-### NOTE : Continue if paying the evm network operations with its native coin !!
+---
+
+#### :exclamation: Next step is only necessary if paying Evm network operations fees with its native coin
+
+---
 
 - 2 - Mint `WEVER` in the evm network by calling the `saveWithdrawNative` :
 
@@ -78,7 +82,7 @@ Note that the native token will be released as its wrapped version.
         uint128 deployWalletValue,
         address remainingGasTo,
         bool notify,
-        TvmCell payload2
+        TvmCell payload
     ) external;
 ```
 
@@ -95,7 +99,11 @@ Note that the native token will be released as its wrapped version.
 
 > NOTE : remainingGasTo will be our address if we were paying the [operations](./Concepts/Operations.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
-### NOTE : continue if paying the evm network operations with its native coin !!
+---
+
+#### :exclamation: Next step is only necessary if paying Evm network operations fees with its native coin
+
+---
 
 - 2 - Mint `BRIDGE` in the evm network by calling the `saveWithdrawNative` :
 
@@ -145,7 +153,11 @@ Note that the native token will be released as its wrapped version.
 
 > NOTE : remainingGasTo will be our address if we were paying the [operations](./Concepts/Operations.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
-### NOTE : Continue if paying the evm network operations with its native coin !!
+---
+
+#### :exclamation: Next step is only necessary if paying Evm network operations fees with its native coin
+
+---
 
 - 2 - Release `USDT` in the evm network by calling the `saveWithdrawAlien` :
 
@@ -195,7 +207,11 @@ Note that the native token will be released as its wrapped version.
 
 > NOTE : remainingGasTo will be our address if we were paying the [operations](./Concepts/Operations.md#evm-operations) gas fees in target evm network with its native coin and will be [EventCloser](./addresses.md#EVERSCALE-smart-contracts) if paying with ever.
 
-### NOTE : Continue if paying the evm network operations with its native coin !!
+---
+
+#### :exclamation: Next step is only necessary if paying Evm network operations fees with its native coin
+
+---
 
 - 2 - Release `BNB` in its wrapped version in evm network by calling the `saveWithdrawAlien` :
 
@@ -217,4 +233,4 @@ Note that the native token will be released as its wrapped version.
 
 ---
 
-> # All of the scripts related to examples above can be found [here](../EVER-TO-EVM/scripts/)
+> All of the scripts related to examples above can be found [here](../EVER-TO-EVM/scripts/)

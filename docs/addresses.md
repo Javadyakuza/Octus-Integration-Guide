@@ -1,13 +1,12 @@
-## ContractAddresses
+# ContractAddresses
 
-### EVM smart contracts
+## EVM smart contracts
 
-This table presents the EVM smart contracts mentioned in the EVER-to-EVM.md and EVM-to-EVER.md files.
+This table contains the EVM smart contracts mentioned in the EVER-to-EVM.md and EVM-to-EVER.md files.
 
 | ---       | contract name | MultiVault                                 |
 | --------- | ------------- | ------------------------------------------ |
 | network   | ---           | ---                                        |
-| Everscale | ---           | 0:0                                        |
 | Ethereum  | ---           | 0x0                                        |
 | Bsc       | ---           | 0x54c55369A6900731D22eACb0DF7C0253CF19dFff |
 | Polygon   | ---           | 0x0                                        |
@@ -15,7 +14,7 @@ This table presents the EVM smart contracts mentioned in the EVER-to-EVM.md and 
 | Solana    | ---           | 0x0                                        |
 | Avalanche | ---           | 0x0                                        |
 
-### EVERSCALE Smart Contracts
+## EVERSCALE Smart Contracts
 
 This table contains the EVERSCALE Smart Contracts mentioned in the EVER-to-EVM.md and EVM-to-EVER.md files.
 
@@ -28,7 +27,9 @@ This table contains the EVERSCALE Smart Contracts mentioned in the EVER-to-EVM.m
 | EventCloser      | 0:6c5803db0fb7403421494ec458e5bc4763fb49cbb1b246ff2d3310e860845a78 |
 | MergePoolV_4     | 0:ec31a2d0740402900a065d2fdd027ef31f0f3748a9862d113902acecc6acae18 |
 
-> ### This table contains EthereumEverscaleEventConfiguration contract addresses for EVERSCALE native/alien token transferring events and each network.
+## Event Configurations
+
+This table contains EthereumEverscaleEventConfiguration contract addresses for EVERSCALE native/alien token transferring events and each network.
 
 | ---       | contract name | EthereumEverscaleEventConfiguration(native event)                  | EthereumEverscaleEventConfiguration(alien event)                   |
 | --------- | ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
@@ -39,18 +40,18 @@ This table contains the EVERSCALE Smart Contracts mentioned in the EVER-to-EVM.m
 | Ftm       | ---           | 0:399627ec06dd8075370850aafbfbf99d05752df16b3459b448a7d0b4b9a083d1 | 0:12861a3fd38d48086343b67d1a17509736d068e807a783f29b558339f0da421a |
 | Avalanche | ---           | 0:f07e44eb5507527c7527b4399d9cef220c0fcf50c6a4db71b3517bd763fdc528 | 0:124457db37ea02f2b7c5575b86f759e51f02adc11cbf36b36fd1da6c36fc82f6 |
 
-> ### This table contains EthereumEverscaleEventConfiguration contract addresses for EVERSCALE native/alien token transferring events and each network.
+This table contains EthereumEverscaleEventConfiguration contract addresses for EVERSCALE native/alien token transferring events and each network.
 
 | ---     | contract name | EverscaleEthereumEventConfiguration(native event)                  | EverscaleEthereumEventConfiguration(alien event)                   |
 | ------- | ------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | network | ---           | ---                                                                | ---                                                                |
 | global  | ---           | 0:a8698f1a9bd48201b1eafcb6975b90b60867063ffff3cc7114a480f924999b75 | 0:6b7e3255de478ff6b5d441235e6ea6c43764f897dd761d56c2fdf7199d80cf86 |
 
-> Opposite of the ethereumEverscaleEventConfigurations, the EverscaleEthereumEventConfigurations are having just two addresses on EVERSCALE which supports all evm networks.
+Opposite of the ethereumEverscaleEventConfigurations, the EverscaleEthereumEventConfigurations are having just two addresses on EVERSCALE which supports all evm networks.
 
 ## TokensAddress
 
-> ### This table contains addresses of token in EVERSCALE network
+This table contains addresses of token in EVERSCALE network
 
 | Token name | Ever Address                                                       |
 | ---------- | ------------------------------------------------------------------ |
@@ -63,28 +64,28 @@ This table contains the EVERSCALE Smart Contracts mentioned in the EVER-to-EVM.m
 
 ---
 
-# LINKS
+## LINKS
 
-### WETH
+#### WETH
 
 > https://everscan.io/accounts/0:59b6b64ac6798aacf385ae9910008a525a84fc6dcf9f942ae81f8e8485fe160d
 
-### WBTC
+#### WBTC
 
 > https://everscan.io/accounts/0:89534ea68ec2e6bcf5eb51d62592cda08c3c2a45a362be97cd340683f5d0a5f6
 
-### WEVER
+#### WEVER
 
 > https://everscan.io/accounts/0:ba1d79499624b1f998a82e951cf2ffd000d17c8f2e14779fcf8cddedb1b90a13
 
-### QUBE
+#### QUBE
 
 > https://everscan.io/accounts/0:9f20666ce123602fd7a995508aeaa0ece4f92133503c0dfbd609b3239f3901e2
 
-### BRIDGE
+#### BRIDGE
 
 > https://everscan.io/accounts/0:f2679d80b682974e065e03bf42bbee285ce7c587eb153b41d761ebfd954c45e1
 
-### USDT
+#### USDT
 
 > https://everscan.io/accounts/0:1b62e528d0c2d0ee20c4aef5294214295998465b58d947405ee757cecfb47148

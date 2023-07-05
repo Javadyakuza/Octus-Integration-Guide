@@ -44,7 +44,7 @@ n the EVM to EVER direction, the following operations are performed on EVERSCALE
 - In the EVER to EVM direction, if the payment for the EVM network operations is in its native coin, the target assets need to be manually released or minted. Calling saveWithdrawNative will perform this operation for EVERSCALE native tokens/coins(MultiVault tokens), while calling saveWithdrawAlien will perform it for EVERSCALE alien tokens.
 
 - In the EVM to EVER direction, if the payment for EVERSCALE operations is in EVER, the assets on EVERSCALE need to be manually released or minted by deploying event contract. \
-  see [Event contract deployment](../scripts/deployEvents/).
+  see [Event contract deployment](../../EVER-TO-EVM/scripts/deployEvents/).
 
 ## Automatic Asset releasing
 
